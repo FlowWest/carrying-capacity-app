@@ -1,3 +1,16 @@
+#' Inverse logit link, transforms variables on logit scale to real scale.
+#' The inverse logit function (called either the inverse logit or the logistic
+#' function) transforms a real number (usually the logarithm of the odds) to a
+#' value (usually probability p) in the interval [0,1]. The invlogit function is
+#' 1/ (1 + exp(-x)).
+#' @name inv.logit
+#' @param eta logit value to be back transformed to real scale
+
+### inverse logit link function
+inv.logit <- function(eta) {
+  return(1 / (1 + exp(-eta)))
+}
+
 #' Adult straying function used to determine proportion of adults that wills stray into each watershed/bypass
 #' @name Ad.Stray
 #' @param wild Boolean value: 1 if  wild fish returning, otherwise 0
