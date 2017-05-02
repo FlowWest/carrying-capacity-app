@@ -1,7 +1,7 @@
-calc_fry <- function(adults, retQ, SCDELT, hatch.alloc, TISD, YOLO, 
-                     p.tempMC2025, A.HARV, P.scour.nst, egg.tmp.eff, degday, spawn) {
-  cc.aloc <- c(rep(1, 15), 0, 0, 2, 2, 2, 0, 0, 3, 0, rep(0, 7)) / 24
-  oth.aloc <- c(rep(1, 15), 0, 0, 1, 1, 1, 0, 0, 1, 0, rep(1, 6), 0) / 25
+calc_num_fish <- function(adults, retQ, SCDELT, hatch.alloc, TISD, YOLO, 
+                     p.tempMC2025, A.HARV, P.scour.nst, egg.tmp.eff, degday, spawn, order) {
+  cc.aloc <- (c(rep(1, 15), 0, 0, 2, 2, 2, 0, 0, 3, 0, rep(0, 7)) / 24)[[order]]
+  oth.aloc <- (c(rep(1, 15), 0, 0, 1, 1, 1, 0, 0, 1, 0, rep(1, 6), 0) / 25)[[order]]
   
   gates.clsd <- 26
   
@@ -54,7 +54,7 @@ calc_fry <- function(adults, retQ, SCDELT, hatch.alloc, TISD, YOLO,
   ### prespawn survival
   pre.spawn.S <- Adult.PSS(DegDay = degday)
   
-  spawnfun(escapement = adults,
+  num_fry <- spawnfun(escapement = init.adult,
            s_adult_inriver = pre.spawn.S,
            sex_ratio = 0.5,
            spawn_hab = spawn * 4046.86,
@@ -62,4 +62,6 @@ calc_fry <- function(adults, retQ, SCDELT, hatch.alloc, TISD, YOLO,
            prob_scour = P.scour.nst,
            s_egg_to_fry = eg2fr,
            fecund = 5522)
+  
+  return(list(spawners = init.adult * pre.spawn.S, fry = num_fry))
 }

@@ -18,15 +18,15 @@ shinyUI(fluidPage(
            tags$h5('Available Habitat (Acres)', style = 'font-weight:bold; width:400px;'),
            div(id = 'size_hab',
                uiOutput('spawn_hab'),
-               uiOutput('fry_hab'),
-               uiOutput('parr_hab')
+               uiOutput('fry_hab')
            )
     ),
     column(width = 9,
            tags$h3('Habitat Needed (Acres)'),
            tags$h4('Spawning'),
+           textOutput('num_spawners'),
+           textOutput('spawn_hab_need'),
            tags$h4('Fry'),
            textOutput('num_fry'),
-           tags$h4('Parr'))
-    
-)))
+           textOutput('fry_hab_need')
+))))

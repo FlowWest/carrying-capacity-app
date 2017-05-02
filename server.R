@@ -6,7 +6,7 @@ library(tidyverse)
 
 
 source('helpers.R')
-source('calc_fry.R')
+source('calc_num_fish.R')
 
 habitat_adults <- filter(read_rds('data/reach_habitat.rds'), adults > 0)
 territory <- territory_needs()
@@ -26,11 +26,6 @@ shinyServer(function(input, output) {
     req(input$stream_reach)
     textInput('fry', 'Fry', value = ceiling(allInput()[[4]]), width = '60px')
   })
-
-  output$parr_hab <- renderUI({
-    req(input$stream_reach)
-    textInput('parr', 'Parr', value = ceiling(allInput()[[5]]), width = '60px')
-  })
   
   output$num_adults <- renderUI({
     req(input$stream_reach)
@@ -38,9 +33,9 @@ shinyServer(function(input, output) {
   })
   
   #TODO- figure out how to get values from adjustable inputs with reactive defaults
-  num_fry <- reactive({
+  num_spawn_fry <- reactive({
     req(input$stream_reach)
-    num_fry <- calc_fry(adults = allInput()$adults,
+    calc_num_fish(adults = allInput()$adults,
              retQ = allInput()$retQ,
              SCDELT = allInput()$SCDELT,
              hatch.alloc = allInput()$hatch.alloc,
@@ -51,11 +46,16 @@ shinyServer(function(input, output) {
              P.scour.nst = allInput()$P.scour.nst,
              egg.tmp.eff = allInput()$temp_eff,
              degday = allInput()$degday,
-             spawn = allInput()$spawning)
-    paste('number of fry:', ceiling(num_fry))
+             spawn = allInput()$spawning,
+             order = allInput()$order)
   })
 
-  output$num_fry <- renderText(num_fry())
+  output$num_fry <- renderText(num_spawn_fry()$fry)
+  
+  output$num_spawners <- renderText(num_spawn_fry()$spawners)
+  
+  output$spawn_hab_need <- renderText(num_spawn_fry()$spawners * 6.2 / 4046.86)
+  output$fry_hab_need <- renderText(num_spawn_fry()$fry * territory[[1]] / 4046.86)
   
   #TODO-once number of fry calculator works, apply territory needs given available habitats
   

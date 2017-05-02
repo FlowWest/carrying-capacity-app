@@ -111,5 +111,5 @@ spawnfun <- function(escapement, s_adult_inriver, sex_ratio, spawn_hab, redd_siz
   
   newfry <- spawners * (1-prob_scour) * fecund * s_egg_to_fry
   
-  return(newfry[1])
+  return(newfry)
 }
