@@ -1,3 +1,16 @@
+#' Inverse logit link, transforms variables on logit scale to real scale.
+#' The inverse logit function (called either the inverse logit or the logistic
+#' function) transforms a real number (usually the logarithm of the odds) to a
+#' value (usually probability p) in the interval [0,1]. The invlogit function is
+#' 1/ (1 + exp(-x)).
+#' @name inv.logit
+#' @param eta logit value to be back transformed to real scale
+
+### inverse logit link function
+inv.logit <- function(eta) {
+  return(1 / (1 + exp(-eta)))
+}
+
 #' Adult straying function used to determine proportion of adults that wills stray into each watershed/bypass
 #' @name Ad.Stray
 #' @param wild Boolean value: 1 if  wild fish returning, otherwise 0
@@ -32,6 +45,28 @@ Ad.Stray <- function(wild, propDLTtrans = 0, propBAYtans = 0, pctQnatl, SCDLT, C
 
 egg2fry <- function(prop.nat, scour, tmp.eff) {
   inv.logit(0.041 + prop.nat * 0.533 - 0.655 * scour) * tmp.eff
+}
+
+#' Adult en route survival function
+#' @param aveT23 Boolean value: 1 if ave daily temps > 22degC otherwise 0
+#' @param BPovrT Boolean value:1 when Tisdale Bypass and or Yolo Bypass 
+#' are overtopped only pertains to Tributaries above bypasses
+#' @param harvest harvest rate for each watershed
+#' @example Adult.S(aveT23 = c(0, 1, 0, 0), BPovrT = c(0, 0, 1, 0), harvest = c(0, 0, .45, 0))
+
+Adult.S <- function(aveT23, BPovrT, harvest) {
+  BA <- 3
+  S <- inv.logit(BA -0.26 * aveT23 - 0.019 * BPovrT) - harvest  
+  ifelse(S > 0, S, 0)
+}
+
+#' Calculates adult prespawn survival, returns ?
+#' @name Adult.PSS
+#' @param DegDay average degree days (celcius)
+
+Adult.PSS <- function(DegDay) {
+  BP <- 3
+  inv.logit(BP - 0.000669526 * DegDay)  
 }
 
 #' Size for Territory
@@ -75,10 +110,6 @@ spawnfun <- function(escapement, s_adult_inriver, sex_ratio, spawn_hab, redd_siz
     ((escapement * s_adult_inriver * sex_ratio) <= (spawn_hab)/redd_size) * (escapement * s_adult_inriver * sex_ratio)
   
   newfry <- spawners * (1-prob_scour) * fecund * s_egg_to_fry
-  
-  placeholders <- matrix(rep(0, length(escapement) * 3), ncol = 3)
-  
-  newfry <- cbind(newfry, placeholders)
   
   return(newfry)
 }
