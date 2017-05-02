@@ -11,31 +11,19 @@ source('calc_num_fish.R')
 habitat_adults <- filter(read_rds('data/reach_habitat.rds'), adults > 0)
 territory <- territory_needs()
 
+
+
 shinyServer(function(input, output) {
   
   allInput <- reactive({
+    req(input$stream_reach)
     filter(habitat_adults, watershed == input$stream_reach)
   })
   
-  output$spawn_hab <- renderUI({
-    req(input$stream_reach)
-    textInput('spawn', 'Spawning', value = ceiling(allInput()[[3]]), width = '60px')
-  })
-
-  output$fry_hab <- renderUI({
-    req(input$stream_reach)
-    textInput('fry', 'Fry', value = ceiling(allInput()[[4]]), width = '60px')
-  })
-  
-  output$num_adults <- renderUI({
-    req(input$stream_reach)
-    textInput('adults', 'Returning Adults', value = ceiling(allInput()[[6]]), width = '60px')
-  })
   
   #TODO- figure out how to get values from adjustable inputs with reactive defaults
   num_spawn_fry <- reactive({
-    req(input$stream_reach)
-    calc_num_fish(adults = allInput()$adults,
+    calc_num_fish(adults = as.numeric(input$adults),
              retQ = allInput()$retQ,
              SCDELT = allInput()$SCDELT,
              hatch.alloc = allInput()$hatch.alloc,
@@ -46,8 +34,21 @@ shinyServer(function(input, output) {
              P.scour.nst = allInput()$P.scour.nst,
              egg.tmp.eff = allInput()$temp_eff,
              degday = allInput()$degday,
-             spawn = allInput()$spawning,
+             spawn = as.numeric(input$spawn),
              order = allInput()$order)
+  })
+  
+
+  output$spawn_hab <- renderUI({
+    textInput('spawn', 'Spawning', value = ceiling(allInput()[[3]]), width = '60px')
+  })
+  
+  output$fry_hab <- renderUI({
+    textInput('fry', 'Fry', value = ceiling(allInput()[[4]]), width = '60px')
+  })
+  
+  output$num_adults <- renderUI({
+    textInput('adults', 'Returning Adults', value = ceiling(allInput()[[6]]), width = '60px')
   })
 
   output$num_fry <- renderText(pretty_num(num_spawn_fry()$fry, 0))
