@@ -2,7 +2,7 @@ library(shiny)
 library(shinythemes)
 library(plotly)
 library(tidyverse)
-library(readr)
+
 
 
 source('helpers.R')
@@ -40,18 +40,19 @@ shinyServer(function(input, output) {
   #TODO- figure out how to get values from adjustable inputs with reactive defaults
   num_fry <- reactive({
     req(input$stream_reach)
-    calc_fry(adults = allInput()[[6]],
-             retQ = allInput()[[16]],
-             SCDELT = allInput()[[7]],
-             hatch.alloc = allInput()[[11]],
-             TISD = allInput()[[13]],
-             YOLO = allInput()[[12]],
-             p.tempMC2025 = allInput()[[8]],
-             A.HARV = allInput()[[10]],
-             P.scour.nst = allInput()[[9]],
-             egg.tmp.eff = allInput()[[14]],
-             degday = allInput()[[15]],
-             spawn = allInput()[[3]])
+    num_fry <- calc_fry(adults = allInput()$adults,
+             retQ = allInput()$retQ,
+             SCDELT = allInput()$SCDELT,
+             hatch.alloc = allInput()$hatch.alloc,
+             TISD = allInput()$TISD,
+             YOLO = allInput()$YOLO,
+             p.tempMC2025 = allInput()$p.tempMC2025,
+             A.HARV = allInput()$A.HARV,
+             P.scour.nst = allInput()$P.scour.nst,
+             egg.tmp.eff = allInput()$temp_eff,
+             degday = allInput()$degday,
+             spawn = allInput()$spawning)
+    paste('number of fry:', ceiling(num_fry))
   })
 
   output$num_fry <- renderText(num_fry())

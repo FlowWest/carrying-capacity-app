@@ -4,7 +4,7 @@ misc <- inps %>%
   select(order = Order, watershed = Watershed, adults = init.adult, SCDELT, p.tempMC2025, P.scour.nst, A.HARV, hatch.alloc, YOLO, TISD)
 
 habitat <- read_csv('data/wethab.csv') %>% 
-  select(order = Order, watershed = Watershed, spawing = Spawning, fry = Fry, parr = Parr)
+  select(order = Order, watershed = Watershed, spawning = Spawning, fry = Fry, parr = Parr)
 
 retQ <- read_csv('data/wetretq.csv') %>% 
   select(watershed = Watershed.full, retQ = y1)

@@ -47,6 +47,28 @@ egg2fry <- function(prop.nat, scour, tmp.eff) {
   inv.logit(0.041 + prop.nat * 0.533 - 0.655 * scour) * tmp.eff
 }
 
+#' Adult en route survival function
+#' @param aveT23 Boolean value: 1 if ave daily temps > 22degC otherwise 0
+#' @param BPovrT Boolean value:1 when Tisdale Bypass and or Yolo Bypass 
+#' are overtopped only pertains to Tributaries above bypasses
+#' @param harvest harvest rate for each watershed
+#' @example Adult.S(aveT23 = c(0, 1, 0, 0), BPovrT = c(0, 0, 1, 0), harvest = c(0, 0, .45, 0))
+
+Adult.S <- function(aveT23, BPovrT, harvest) {
+  BA <- 3
+  S <- inv.logit(BA -0.26 * aveT23 - 0.019 * BPovrT) - harvest  
+  ifelse(S > 0, S, 0)
+}
+
+#' Calculates adult prespawn survival, returns ?
+#' @name Adult.PSS
+#' @param DegDay average degree days (celcius)
+
+Adult.PSS <- function(DegDay) {
+  BP <- 3
+  inv.logit(BP - 0.000669526 * DegDay)  
+}
+
 #' Size for Territory
 #' Used the mid-point for each size class for the territory size calculations
 #' Territory Size as function of Length (cm) (Grant and Kramer 1990)
@@ -89,9 +111,5 @@ spawnfun <- function(escapement, s_adult_inriver, sex_ratio, spawn_hab, redd_siz
   
   newfry <- spawners * (1-prob_scour) * fecund * s_egg_to_fry
   
-  placeholders <- matrix(rep(0, length(escapement) * 3), ncol = 3)
-  
-  newfry <- cbind(newfry, placeholders)
-  
-  return(newfry)
+  return(newfry[1])
 }
