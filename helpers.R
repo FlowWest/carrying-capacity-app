@@ -1,3 +1,7 @@
+pretty_num <- function(num, n) {
+  format(round(num, n), big.mark = ',', trim = FALSE)
+} 
+
 #' Inverse logit link, transforms variables on logit scale to real scale.
 #' The inverse logit function (called either the inverse logit or the logistic
 #' function) transforms a real number (usually the logarithm of the odds) to a

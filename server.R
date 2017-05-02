@@ -50,12 +50,12 @@ shinyServer(function(input, output) {
              order = allInput()$order)
   })
 
-  output$num_fry <- renderText(num_spawn_fry()$fry)
+  output$num_fry <- renderText(pretty_num(num_spawn_fry()$fry, 0))
   
-  output$num_spawners <- renderText(num_spawn_fry()$spawners)
+  output$num_spawners <- renderText(pretty_num(num_spawn_fry()$spawners, 0))
   
-  output$spawn_hab_need <- renderText(num_spawn_fry()$spawners * 6.2 / 4046.86)
-  output$fry_hab_need <- renderText(num_spawn_fry()$fry * territory[[1]] / 4046.86)
+  output$spawn_hab_need <- renderText(pretty_num(num_spawn_fry()$spawners * 6.2 / 4046.86, 2))
+  output$fry_hab_need <- renderText(pretty_num(num_spawn_fry()$fry * territory[[1]] / 4046.86, 2))
   
   #TODO-once number of fry calculator works, apply territory needs given available habitats
   
