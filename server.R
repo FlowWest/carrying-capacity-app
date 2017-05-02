@@ -40,15 +40,15 @@ shinyServer(function(input, output) {
   
 
   output$spawn_hab <- renderUI({
-    textInput('spawn', 'Spawning', value = ceiling(allInput()[[3]]), width = '60px')
+    textInput('spawn', 'Spawning', value = ceiling(allInput()$spawning), width = '60px')
   })
   
   output$fry_hab <- renderUI({
-    textInput('fry', 'Fry', value = ceiling(allInput()[[4]]), width = '60px')
+    textInput('fry', 'Fry', value = ceiling(allInput()$fry), width = '60px')
   })
   
   output$num_adults <- renderUI({
-    textInput('adults', 'Returning Adults', value = ceiling(allInput()[[6]]), width = '60px')
+    textInput('adults', 'Returning Adults', value = ceiling(allInput()$adults), width = '220px')
   })
 
   output$num_fry <- renderText(pretty_num(num_spawn_fry()$fry, 0))
