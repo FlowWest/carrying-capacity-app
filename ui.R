@@ -1,7 +1,8 @@
 
 shinyUI(fluidPage(
   titlePanel('', windowTitle = 'Chinook Carrying Capacity'),
-  theme = 'styles.css',
+  theme = shinytheme('cosmo'),
+  tags$header(includeCSS('styles.css')),
   # title + branding
   fluidRow(
     column(width = 12, id = 'title',
@@ -20,21 +21,21 @@ shinyUI(fluidPage(
         uiOutput('fry_hab')
       )
     ),
-    column(width = 3, class = 'fish',
+    column(width = 4, class = 'fish',
            div(id='fish_sq', class = 'fish_sq', 
                tags$img(src = 'spawn.png'), 
                tags$h4('Spawners', style = 'font-weight:bold;'),
-               div(tags$h5('Total', style = 'font-weight:bold;'), textOutput('num_spawners')),
-               div(tags$h5('Available Habitat', style = 'font-weight:bold;'), textOutput('spawn_hab_available')),
-               div(tags$h5('Needed Habitat', style = 'font-weight:bold;'), textOutput('spawn_hab_need')),
-               div(tags$h5('Habitat Limited', style = 'font-weight:bold;'), textOutput('spawn_limit')))),
-    column(width = 3, class = 'fish', 
+               div(tags$h5('Total'), textOutput('num_spawners')),
+               div(tags$h5('Available Habitat'), textOutput('spawn_hab_available')),
+               div(tags$h5('Needed Habitat'), textOutput('spawn_hab_need')),
+               div(tags$h5('Habitat Limited'), textOutput('spawn_limit')))),
+    column(width = 4, class = 'fish', 
            div(class='fish_sq',
                tags$img(src = 'fry.png', style='padding-top:17px;'), 
                tags$h4('Fry', style = 'font-weight:bold;'),
-               div(tags$h5('Total', style = 'font-weight:bold;'), textOutput('num_fry')),
-               div(tags$h5('Available Habitat', style = 'font-weight:bold;'), textOutput('fry_hab_available')),
-               div(tags$h5('Need Habitat', style = 'font-weight:bold;'), textOutput('fry_hab_need')),
-               div(tags$h5('Habitat Limited', style = 'font-weight:bold;'), textOutput('fry_limit'))))
+               div(tags$h5('Total'), textOutput('num_fry')),
+               div(tags$h5('Available Habitat'), textOutput('fry_hab_available')),
+               div(tags$h5('Need Habitat'), textOutput('fry_hab_need')),
+               div(tags$h5('Habitat Limited'), textOutput('fry_limit'))))
   )
 ))

@@ -30,13 +30,17 @@
   display: inline-block;
   border: solid .5px #999;
   border-radius:10px;
-  padding:25px;
+  padding: 25px 40px 40px 40px;
   margin-right:20px;
-  width:300px;
+  width:400px;
 }
 
 h5 {
   display: inline-block;
+  min-width: 200px;
+  font-weight: 500;
+  font-size: 20px;
+  padding-left: 20px;
 }
 
 #num_spawners {
@@ -81,6 +85,12 @@ h5 {
 }
 
 .shiny-text-output {
-  font-size:16px;
-  margin-left:10px;
+  font-size: 20px;
+}
+
+label {
+  display: inline-block;
+  max-width: 100%;
+  margin-bottom: 5px;
+  font-weight:300;
 }
