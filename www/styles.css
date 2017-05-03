@@ -1,34 +1,38 @@
 #title{
   background-color: #333;
+  margin-top:-15px;
+  padding-left:30px;
+  padding-bottom:20px;
+  padding-top:10px;
+  vertical-align:middle;
 }
 
 #app_name{
    display:inline-block; 
    color: #ccc;
-   
+   padding-left: 50px;
+   vertical-align:middle;
+   font-size: 50px;
 }
 #controls {
   background-color: #bbb;
+  padding: 30px 30px 550px 30px;
 }
 
-#fish {
+.fish {
   padding-left: 30px;
   padding-top: 30px;
+  padding-bottom: 100%;
+  margin-bottom: -100%;
 }
 
-#spawn_sq {
+.fish_sq {
   display: inline-block;
   border: solid .5px #999;
   border-radius:10px;
   padding:25px;
   margin-right:20px;
-}
-
-#fry_sq {
-  display: inline-block;
-  border: solid .5px #999;
-  border-radius:10px;
-  padding:25px;
+  width:300px;
 }
 
 h5 {
@@ -63,7 +67,20 @@ h5 {
   display: inline-block;
 }
 
+#spawn_hab {
+  display: inline-block;
+  padding-right: 30px;
+}
+
+#fry_hab {
+  display: inline-block;
+}
+
 #fry_limit {
   display: inline-block;
 }
 
+.shiny-text-output {
+  font-size:16px;
+  margin-left:10px;
+}
