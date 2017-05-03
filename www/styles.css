@@ -1,22 +1,19 @@
 #title {
   display: inline-flex;
+  background-color: #aaa;
 }
 
-/*
-#size_hab{
-  display:inline-flex;
-  margin-right:20px;
+#controls {
+  background-color: #ddd;
 }
 
-#spawn_hab{
-  margin-right:20px;
+#spawn_sq {
+  display: inline-block;
+  border: solid .5px #ccc;
 }
 
-#fry_hab{
-  margin-right:20px;
+#fry_sq {
+  display: inline-block;
+  border: solid .5px #ccc;
 }
 
-#parr_hab{
-  margin-right:20px;
-}
-*/

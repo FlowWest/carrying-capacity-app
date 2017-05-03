@@ -58,6 +58,9 @@ shinyServer(function(input, output) {
   output$spawn_hab_need <- renderText(pretty_num(num_spawn_fry()$spawners * 6.2 / 4046.86, 2))
   output$fry_hab_need <- renderText(pretty_num(num_spawn_fry()$fry * territory[[1]] / 4046.86, 2))
   
+  output$spawn_hab_available <- renderText(input$spawn)
+  output$fry_hab_available <- renderText(input$fry)
+  
   #TODO-once number of fry calculator works, apply territory needs given available habitats
   
   #TODO - figure out parr calculator, take number at maximum parr present (month 3?)
