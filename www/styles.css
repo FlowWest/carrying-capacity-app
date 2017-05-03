@@ -1,19 +1,69 @@
-#title {
-  display: inline-flex;
-  background-color: #aaa;
+#title{
+  background-color: #333;
 }
 
+#app_name{
+   display:inline-block; 
+   color: #ccc;
+   
+}
 #controls {
-  background-color: #ddd;
+  background-color: #bbb;
+}
+
+#fish {
+  padding-left: 30px;
+  padding-top: 30px;
 }
 
 #spawn_sq {
   display: inline-block;
-  border: solid .5px #ccc;
+  border: solid .5px #999;
+  border-radius:10px;
+  padding:25px;
+  margin-right:20px;
 }
 
 #fry_sq {
   display: inline-block;
-  border: solid .5px #ccc;
+  border: solid .5px #999;
+  border-radius:10px;
+  padding:25px;
+}
+
+h5 {
+  display: inline-block;
+}
+
+#num_spawners {
+  display: inline-block;
+}
+
+#num_fry {
+  display: inline-block;
+}
+
+#spawn_hab_need {
+  display: inline-block;
+}
+
+#fry_hab_need {
+  display: inline-block;
+}
+
+#spawn_hab_available {
+  display: inline-block;
+}
+
+#fry_hab_available {
+  display: inline-block;
+}
+
+#spawn_limit {
+  display: inline-block;
+}
+
+#fry_limit {
+  display: inline-block;
 }
 
