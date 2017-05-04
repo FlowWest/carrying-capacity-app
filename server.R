@@ -60,4 +60,16 @@ shinyServer(function(input, output) {
   output$spawn_limit <- renderText(ifelse(as.numeric(input$spawn) < as.numeric(spawn_need()), 'Yes', 'No'))
   output$fry_limit <- renderText(ifelse(as.numeric(input$fry) < as.numeric(fry_need()), 'Yes', 'No'))
   
+  #Run == input$run, 
+  gt <- reactive({
+    filter(grandtab, River == input$stream_reach, Run %in% input$run)
+  })
+  
+  output$grand_tab <- renderPlotly({
+    gt() %>% 
+      plot_ly(x = ~year, y = ~Count, type = 'bar', marker = list(color = 'rgb(68, 68, 68)')) %>% 
+      layout(yaxis = list(title = 'count')) %>% 
+      config(displayModeBar = FALSE)
+  })
+  
 })

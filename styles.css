@@ -15,10 +15,17 @@
    font-size: 50px;
 }
 
-#controls {
+#controls_col {
   background-color: #bbb;
-  padding: 30px 30px 550px 30px;
+  padding-bottom: 550px ;
+  padding-top: 30px;
   min-width:300px;
+}
+
+#controls{
+  margin: auto;
+  width: 60%;
+  padding:10px;
 }
 
 .fish {
@@ -95,3 +102,8 @@ label {
   font-weight:300;
   font-size:18px;
 }
+
+#chart {
+  padding-top: 20px;
+}
+
