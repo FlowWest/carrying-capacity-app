@@ -8,7 +8,7 @@ shinyServer(function(input, output) {
   #filter results based on selected reach----
   allInput <- reactive({
     req(input$stream_reach)
-    filter(habitat_adults, watershed == input$stream_reach, adults > 0)
+    filter(habitat_adults, watershed == input$stream_reach)
   })
   
   #calc number of spawners and resulting fry----
