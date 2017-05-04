@@ -1,13 +1,6 @@
-library(shiny)
-library(shinythemes)
-library(plotly)
-library(tidyverse)
-library(readr)
+source('helpers.R', local = TRUE)
+source('calc_num_fish.R', local = TRUE)
 
-source('helpers.R')
-source('calc_num_fish.R')
-
-habitat_adults <- read_rds('data/reach_habitat.rds')
 territory <- territory_needs()
 
 shinyServer(function(input, output) {

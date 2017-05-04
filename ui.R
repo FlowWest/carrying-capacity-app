@@ -1,6 +1,3 @@
-
-habitat_adults <- read_rds('data/reach_habitat.rds')
-
 shinyUI(fluidPage(
   titlePanel('', windowTitle = 'Chinook Carrying Capacity'),
   theme = shinytheme('cosmo'),
@@ -37,7 +34,7 @@ shinyUI(fluidPage(
                tags$h4('Fry', style = 'font-weight:bold;'),
                div(tags$h5('Total'), textOutput('num_fry')),
                div(tags$h5('Available Habitat'), textOutput('fry_hab_available')),
-               div(tags$h5('Need Habitat'), textOutput('fry_hab_need')),
+               div(tags$h5('Needed Habitat'), textOutput('fry_hab_need')),
                div(tags$h5('Habitat Limited'), textOutput('fry_limit'))))
   )
 ))
