@@ -2,23 +2,20 @@ library(shiny)
 library(shinythemes)
 library(plotly)
 library(tidyverse)
-
-
+library(readr)
 
 source('helpers.R')
 source('calc_num_fish.R')
 
-habitat_adults <- filter(read_rds('data/reach_habitat.rds'), adults > 0)
+habitat_adults <- read_rds('data/reach_habitat.rds')
 territory <- territory_needs()
-
-
 
 shinyServer(function(input, output) {
   
   #filter results based on selected reach----
   allInput <- reactive({
     req(input$stream_reach)
-    filter(habitat_adults, watershed == input$stream_reach)
+    filter(habitat_adults, watershed == input$stream_reach, adults > 0)
   })
   
   #calc number of spawners and resulting fry----
