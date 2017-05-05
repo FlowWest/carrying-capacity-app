@@ -65,10 +65,16 @@ shinyServer(function(input, output) {
     filter(grandtab, River == input$stream_reach, Run %in% input$run)
   })
   
+  dbd <- reactive({
+    filter(doubling, watershed == input$stream_reach)
+  })
+  
   output$grand_tab <- renderPlotly({
     gt() %>% 
       plot_ly(x = ~year, y = ~Count, type = 'bar', marker = list(color = 'rgb(68, 68, 68)')) %>% 
-      layout(yaxis = list(title = 'count')) %>% 
+      add_trace(data = dbd(), x = c(1974,2015), y = ~goal, type = 'scatter', line = list(dash = 'dash'), 
+                hoverinfo = 'text', text = ~paste('Doubling Goal', goal)) %>% 
+      layout(yaxis = list(title = 'count'), showlegend = FALSE) %>% 
       config(displayModeBar = FALSE)
   })
   

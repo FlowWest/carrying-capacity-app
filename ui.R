@@ -42,7 +42,7 @@ shinyUI(fluidPage(
                         div(tags$h5('Habitat Limited'), textOutput('fry_limit'))))),
            fluidRow(id = 'chart',
              column(width = 11,
-                    tags$h5('Grand Tab Counts'),
+                    tags$h5('Grand Tab Escapement', style = 'width: 400px;'),
                     plotlyOutput('grand_tab')
              ),
              column(width = 1, style = 'padding-left:0;',
