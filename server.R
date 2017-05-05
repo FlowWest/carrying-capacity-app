@@ -1,27 +1,17 @@
-library(shiny)
-library(shinythemes)
-library(plotly)
-library(tidyverse)
+source('helpers.R', local = TRUE)
+source('calc_num_fish.R', local = TRUE)
 
-
-
-source('helpers.R')
-source('calc_num_fish.R')
-
-habitat_adults <- filter(read_rds('data/reach_habitat.rds'), adults > 0)
 territory <- territory_needs()
-
-
 
 shinyServer(function(input, output) {
   
+  #filter results based on selected reach----
   allInput <- reactive({
     req(input$stream_reach)
     filter(habitat_adults, watershed == input$stream_reach)
   })
   
-  
-  #TODO- figure out how to get values from adjustable inputs with reactive defaults
+  #calc number of spawners and resulting fry----
   num_spawn_fry <- reactive({
     calc_num_fish(adults = as.numeric(input$adults),
              retQ = allInput()$retQ,
@@ -38,28 +28,54 @@ shinyServer(function(input, output) {
              order = allInput()$order)
   })
   
-
+  # create text input with default reach values----
+  output$num_adults <- renderUI({
+    textInput('adults', 'Returning Adults', value = ceiling(allInput()$adults), width = '220px')
+  })
+  
   output$spawn_hab <- renderUI({
-    textInput('spawn', 'Spawning', value = ceiling(allInput()[[3]]), width = '60px')
+    textInput('spawn', 'Spawning', value = ceiling(allInput()$spawning), width = '60px')
   })
   
   output$fry_hab <- renderUI({
-    textInput('fry', 'Fry', value = ceiling(allInput()[[4]]), width = '60px')
+    textInput('fry', 'Fry', value = ceiling(allInput()$fry), width = '60px')
   })
   
-  output$num_adults <- renderUI({
-    textInput('adults', 'Returning Adults', value = ceiling(allInput()[[6]]), width = '60px')
+  # print number of spawners and fry
+  output$num_fry <- renderText(pretty_num(num_spawn_fry()$fry, 0))
+  output$num_spawners <- renderText(pretty_num(num_spawn_fry()$spawners, 0))
+  
+  #print habitat needed
+  spawn_need <- reactive(pretty_num(num_spawn_fry()$spawners * 6.2 / 4046.86, 2))
+  fry_need <- reactive(pretty_num(num_spawn_fry()$fry * territory[[1]] / 4046.86, 2))
+  
+  output$spawn_hab_need <- renderText(spawn_need())
+  output$fry_hab_need <- renderText(fry_need())
+  
+  # print available habitat
+  output$spawn_hab_available <- renderText(input$spawn)
+  output$fry_hab_available <- renderText(input$fry)
+  
+  # print habitat limited
+  output$spawn_limit <- renderText(ifelse(as.numeric(input$spawn) < as.numeric(spawn_need()), 'Yes', 'No'))
+  output$fry_limit <- renderText(ifelse(as.numeric(input$fry) < as.numeric(fry_need()), 'Yes', 'No'))
+  
+  #Run == input$run, 
+  gt <- reactive({
+    filter(grandtab, River == input$stream_reach, Run %in% input$run)
   })
-
-  output$num_fry <- renderText(num_spawn_fry()$fry)
   
-  output$num_spawners <- renderText(num_spawn_fry()$spawners)
+  dbd <- reactive({
+    filter(doubling, watershed == input$stream_reach)
+  })
   
-  output$spawn_hab_need <- renderText(num_spawn_fry()$spawners * 6.2 / 4046.86)
-  output$fry_hab_need <- renderText(num_spawn_fry()$fry * territory[[1]] / 4046.86)
-  
-  #TODO-once number of fry calculator works, apply territory needs given available habitats
-  
-  #TODO - figure out parr calculator, take number at maximum parr present (month 3?)
+  output$grand_tab <- renderPlotly({
+    gt() %>% 
+      plot_ly(x = ~year, y = ~Count, type = 'bar', marker = list(color = 'rgb(68, 68, 68)')) %>% 
+      add_trace(data = dbd(), x = c(1974,2015), y = ~goal, type = 'scatter', line = list(dash = 'dash'), 
+                hoverinfo = 'text', text = ~paste('Doubling Goal', goal)) %>% 
+      layout(yaxis = list(title = 'count'), showlegend = FALSE) %>% 
+      config(displayModeBar = FALSE)
+  })
   
 })
