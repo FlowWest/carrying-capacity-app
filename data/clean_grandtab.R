@@ -14,6 +14,11 @@ t1 <- gt %>%
   mutate(year = as.numeric(str_extract(Year, '[0-9]+'))) %>% 
   filter(River %in% reaches, `Count Type` == 'In-River')
 
+ gt %>% 
+  mutate(year = as.numeric(str_extract(Year, '[0-9]+')),
+         River = replace(ifelse(River == 'Sacramento River Main Stem', 'Upper Sacramento River', River))) %>% View()
+  filter(`Count Type` == 'In-River')
+
 write_rds(t1, 'data/grandtab.rds')
 
 
