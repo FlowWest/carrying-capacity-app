@@ -11,6 +11,12 @@ shinyServer(function(input, output) {
     filter(habitat_adults, watershed == input$stream_reach)
   })
   
+  natural_spawners <- reactive({
+    req(input$stream_reach)
+    filter(spawners, watershed == input$stream_reach) %>% 
+    select_(input$nat_adults)
+  })
+  
   #calc number of spawners and resulting fry----
   num_spawn_fry <- reactive({
     calc_num_fish(adults = as.numeric(input$adults),
@@ -24,13 +30,12 @@ shinyServer(function(input, output) {
              P.scour.nst = allInput()$P.scour.nst,
              egg.tmp.eff = allInput()$temp_eff,
              degday = allInput()$degday,
-             spawn = as.numeric(input$spawn),
-             order = allInput()$order)
+             spawn = as.numeric(input$spawn))
   })
   
   # create text input with default reach values----
   output$num_adults <- renderUI({
-    textInput('adults', 'Returning Adults', value = ceiling(allInput()$adults), width = '220px')
+    textInput(inputId = 'adults', label = NULL, value = ceiling(natural_spawners()), width = '220px')
   })
   
   output$spawn_hab <- renderUI({
@@ -62,16 +67,28 @@ shinyServer(function(input, output) {
   
   #Run == input$run, 
   gt <- reactive({
-    filter(grandtab, River == input$stream_reach, Run %in% input$run)
+    temp <- filter(grandtab, watershed == input$stream_reach)
+    if (is.na(temp$run)) {
+      return(temp)
+    } else {
+      filter(temp, run == input$run)
+    }
   })
+  
   
   dbd <- reactive({
-    filter(doubling, watershed == input$stream_reach)
+    temp <- filter(doubling, watershed == input$stream_reach)
+    if (is.na(temp$run)) {
+      return(temp)
+    } else {
+      filter(temp, run == input$run)
+    }
   })
-  
+
   output$grand_tab <- renderPlotly({
     gt() %>% 
-      plot_ly(x = ~year, y = ~Count, type = 'bar', marker = list(color = 'rgb(68, 68, 68)')) %>% 
+      plot_ly(x = ~year, y = ~count, type = 'bar', marker = list(color = 'rgb(68, 68, 68)'), 
+              hoverinfo = 'text', text = ~paste('Year', year, '</br>Count', format(count, big.mark = ',', trim = FALSE))) %>% 
       add_trace(data = dbd(), x = c(1974,2015), y = ~goal, type = 'scatter', line = list(dash = 'dash'), 
                 hoverinfo = 'text', text = ~paste('Doubling Goal', goal)) %>% 
       layout(yaxis = list(title = 'count'), showlegend = FALSE) %>% 
