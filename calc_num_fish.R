@@ -1,24 +1,6 @@
 calc_num_fish <- function(adults, retQ, SCDELT, hatch.alloc, TISD, YOLO, 
-                     p.tempMC2025, A.HARV, P.scour.nst, egg.tmp.eff, degday, spawn, order) {
-  cc.aloc <- (c(rep(1, 15), 0, 0, 2, 2, 2, 0, 0, 3, 0, rep(0, 7)) / 24)[[order]]
-  oth.aloc <- (c(rep(1, 15), 0, 0, 1, 1, 1, 0, 0, 1, 0, rep(1, 6), 0) / 25)[[order]]
-  
-  gates.clsd <- 26
-  
-  # number of wild fish expected to stray
-  stray <- Ad.Stray(wild = 1,
-                    pctQnatl = retQ,
-                    SCDLT = SCDELT,
-                    CrxChn = gates.clsd) * adults
-  
-  prop.nat.stray <- Ad.Stray(wild = 1,
-                             pctQnatl = retQ,
-                             SCDLT = SCDELT,
-                             CrxChn = gates.clsd)
-  ##
-  nat.adult <- adults - stray +
-    sum(stray * SCDELT) * cc.aloc +
-    sum(stray * (1 - SCDELT)) * oth.aloc
+                     p.tempMC2025, A.HARV, P.scour.nst, egg.tmp.eff, degday, spawn) {
+
   
   ## allocate hatchery fish returning from ocean to watersheds
   ## for stochas inps$hatch.alloc should come from Direclet dist.
@@ -39,7 +21,7 @@ calc_num_fish <- function(adults, retQ, SCDELT, hatch.alloc, TISD, YOLO,
   adult_en_route <- Adult.S(aveT23 = p.tempMC2025, BPovrT, harvest = A.HARV)
   
   ### here's the adults that made it to spawning grounds
-  nat.adult <- adult_en_route * nat.adult
+  nat.adult <- adults
   hatch.adult <- adult_en_route * hatch.adult
   
   #### all adult on spawning grounds

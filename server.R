@@ -11,6 +11,12 @@ shinyServer(function(input, output) {
     filter(habitat_adults, watershed == input$stream_reach)
   })
   
+  natural_spawners <- reactive({
+    req(input$stream_reach)
+    filter(spawners, watershed == input$stream_reach) %>% 
+    select_(input$nat_adults)
+  })
+  
   #calc number of spawners and resulting fry----
   num_spawn_fry <- reactive({
     calc_num_fish(adults = as.numeric(input$adults),
@@ -24,13 +30,12 @@ shinyServer(function(input, output) {
              P.scour.nst = allInput()$P.scour.nst,
              egg.tmp.eff = allInput()$temp_eff,
              degday = allInput()$degday,
-             spawn = as.numeric(input$spawn),
-             order = allInput()$order)
+             spawn = as.numeric(input$spawn))
   })
   
   # create text input with default reach values----
   output$num_adults <- renderUI({
-    textInput('adults', 'Returning Adults', value = ceiling(allInput()$adults), width = '220px')
+    textInput(inputId = 'adults', label = NULL, value = ceiling(natural_spawners()), width = '220px')
   })
   
   output$spawn_hab <- renderUI({
@@ -65,8 +70,10 @@ shinyServer(function(input, output) {
     filter(grandtab, River == input$stream_reach, Run %in% input$run)
   })
   
+  
   dbd <- reactive({
-    filter(doubling, watershed == input$stream_reach)
+    doubling %>% 
+      filter(watershed == input$stream_reach, run == input$run)
   })
   
   output$grand_tab <- renderPlotly({
