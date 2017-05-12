@@ -14,17 +14,17 @@ shinyUI(fluidPage(
              selectInput('stream_reach', 'Reach', 
                          choices = habitat_adults$watershed, selected = 'Merced River',
                          width = '220px'),
+             tags$h4('Habitat Available (Acres)'),
+             div(
+               uiOutput('spawn_hab'),
+               uiOutput('fry_hab')
+             ),
              tags$h4('Model Simulated Number of Natural Spawners'),
              div(
                uiOutput('num_adults'),
                radioButtons(inputId = 'nat_adults', label = NULL, 
                             choices = c('initial', 'max', 'min', 'mean'), 
-                            inline = TRUE, width = '300px')
-             ),
-             tags$h4('Habitat Available (Acres)'),
-             div(
-               uiOutput('spawn_hab'),
-               uiOutput('fry_hab')
+                            inline = TRUE)
              )
            )
     ),

@@ -1,5 +1,6 @@
 library(magrittr)
 library(stringr)
+library(tidyverse)
 
 grandtab <- readxl::read_excel('data/GrandTab 1975-2015.xlsx')
 
@@ -13,9 +14,14 @@ gt <- filter(grandtab, !is.na(Count))
 t1 <- gt %>% 
   mutate(year = as.numeric(str_extract(Year, '[0-9]+')),
          River = ifelse(River == 'Sacramento River Main Stem', 'Upper Sacramento River', River)) %>% 
-  filter(River %in% reaches, `Count Type` == 'In-River') 
+  filter(River %in% reaches, `Count Type` == 'In-River') %>% 
+  select(year, watershed = River, count = Count, run = Run)
 
-write_rds(t1, 'data/grandtab.rds')
+missings <- data_frame(year = NA, watershed = c("Elder Creek","Stony Creek", "San Joaquin River"), count = NA, run = NA)
+b <- bind_rows(t1, missings)
+
+
+write_rds(b, 'data/grandtab.rds')
 
 
 # clean doubling goals, need to deal with sac
@@ -42,7 +48,11 @@ doublin <- doubling %>%
                        run = c('Fall', 'Late-Fall', 'Winter', 'Spring'), 
                        goal = c(258700, 44550, 110000, 59000)))
 
-write_rds(doublin, 'data/doubling_goal.rds')
+missing_sheds <- reaches[which(!(reaches %in% doublin$watershed))]
+missings <- data_frame(watershed = missing_sheds, run = NA, goal = NA)
+
+
+write_rds(bind_rows(doublin, missings), 'data/doubling_goal.rds')
 
 # clean doubling goals from mark email
 
