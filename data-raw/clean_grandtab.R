@@ -2,7 +2,7 @@ library(magrittr)
 library(stringr)
 library(tidyverse)
 
-grandtab <- readxl::read_excel('data/GrandTab 1975-2015.xlsx')
+grandtab <- readxl::read_excel('data-raw/GrandTab 1975-2015.xlsx')
 
 reaches <- read_rds('data/reach_habitat.rds') %>% 
   filter(!is.na(adults), adults > 0) %>% 
@@ -17,7 +17,10 @@ t1 <- gt %>%
   filter(River %in% reaches, `Count Type` == 'In-River') %>% 
   select(year, watershed = River, count = Count, run = Run)
 
-missings <- data_frame(year = NA, watershed = c("Elder Creek","Stony Creek", "San Joaquin River"), count = NA, run = NA)
+missings <- data_frame(year = rep(c(rep(1975, 26), rep(2015, 26)), times = 4),
+                       watershed = rep(reaches, times = 8), 
+                       count = NA, 
+                       run = rep(c('Fall', "Late-Fall", "Winter", "Spring" ), each = 52))
 b <- bind_rows(t1, missings)
 
 

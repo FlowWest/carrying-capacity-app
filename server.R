@@ -39,11 +39,23 @@ shinyServer(function(input, output) {
   })
   
   output$spawn_hab <- renderUI({
-    textInput('spawn', 'Spawning', value = ceiling(allInput()$spawning), width = '60px')
+      textInput('spawn', 'Spawning', value = ceiling(allInput()$spawning), width = '60px')
   })
   
+  fry_habitat <- reactive({
+    if (input$ic_fp == 'in channel') {
+      ceiling(allInput()$fry)
+    } else if (input$ic_fp == 'flood plain') {
+      ceiling(allInput()$fp_area_acres)
+    } else {
+      ceiling(allInput()$fry + allInput()$fp_area_acres)
+    }
+  })
+  
+  
   output$fry_hab <- renderUI({
-    textInput('fry', 'Fry', value = ceiling(allInput()$fry), width = '60px')
+    textInput('fry', 'Fry', value = fry_habitat(), width = '60px')
+    
   })
   
   # print number of spawners and fry
@@ -75,24 +87,38 @@ shinyServer(function(input, output) {
     }
   })
   
-  
   dbd <- reactive({
-    temp <- filter(doubling, watershed == input$stream_reach)
-    if (is.na(temp$run)) {
-      return(temp)
-    } else {
-      filter(temp, run == input$run)
-    }
+    filter(doubling, watershed == input$stream_reach)
   })
-
+  
   output$grand_tab <- renderPlotly({
     gt() %>% 
       plot_ly(x = ~year, y = ~count, type = 'bar', marker = list(color = 'rgb(68, 68, 68)'), 
               hoverinfo = 'text', text = ~paste('Year', year, '</br>Count', format(count, big.mark = ',', trim = FALSE))) %>% 
-      add_trace(data = dbd(), x = c(1974,2015), y = ~goal, type = 'scatter', line = list(dash = 'dash'), 
-                hoverinfo = 'text', text = ~paste('Doubling Goal', goal)) %>% 
+      add_trace(data = dbd(), x = c(1974,2015), y = ~doubling_goal, type = 'scatter', line = list(dash = 'dash'), 
+                hoverinfo = 'text', text = ~paste('Doubling Goal', doubling_goal)) %>% 
       layout(yaxis = list(title = 'count'), showlegend = FALSE) %>% 
       config(displayModeBar = FALSE)
   })
+  
+  
+  # dbd <- reactive({
+  #   temp <- filter(doubling, watershed == input$stream_reach)
+  #   if (is.na(temp$run)) {
+  #     return(temp)
+  #   } else {
+  #     filter(temp, run == input$run)
+  #   }
+  # })
+  # 
+  # output$grand_tab <- renderPlotly({
+  #   gt() %>% 
+  #     plot_ly(x = ~year, y = ~count, type = 'bar', marker = list(color = 'rgb(68, 68, 68)'), 
+  #             hoverinfo = 'text', text = ~paste('Year', year, '</br>Count', format(count, big.mark = ',', trim = FALSE))) %>% 
+  #     add_trace(data = dbd(), x = c(1974,2015), y = ~goal, type = 'scatter', line = list(dash = 'dash'), 
+  #               hoverinfo = 'text', text = ~paste('Doubling Goal', goal)) %>% 
+  #     layout(yaxis = list(title = 'count'), showlegend = FALSE) %>% 
+  #     config(displayModeBar = FALSE)
+  # })
   
 })

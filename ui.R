@@ -17,6 +17,7 @@ shinyUI(fluidPage(
                          width = '220px'),
              tags$h4('Habitat Available (Acres)'),
              div(
+               radioButtons(inputId = 'ic_fp', label = NULL, choices = c('in channel', 'flood plain', 'both')),
                uiOutput('spawn_hab'),
                uiOutput('fry_hab')
              ),
@@ -61,7 +62,8 @@ shinyUI(fluidPage(
              tags$h6('Grand Tab escapement estimates and the CVPIA doubling
                     goal for each watershed are presented in order to provide 
                     context for modeling output.'),
-             tags$h6('App created and maintained by Sadie Gill sgill@flowwest.com')
+             tags$h6('App created and maintained by', 
+                     tags$a('Sadie Gill', href = 'mailto:sgill@flowwest.com', target = '_blank'))
            )
     ),
     column(width = 9,
