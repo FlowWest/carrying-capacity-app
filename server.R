@@ -39,11 +39,23 @@ shinyServer(function(input, output) {
   })
   
   output$spawn_hab <- renderUI({
-    textInput('spawn', 'Spawning', value = ceiling(allInput()$spawning), width = '60px')
+      textInput('spawn', 'Spawning', value = ceiling(allInput()$spawning), width = '60px')
   })
   
+  fry_habitat <- reactive({
+    if (input$ic_fp == 'in channel') {
+      ceiling(allInput()$fry)
+    } else if (input$ic_fp == 'flood plain') {
+      ceiling(allInput()$fp_area_acres)
+    } else {
+      ceiling(allInput()$fry + allInput()$fp_area_acres)
+    }
+  })
+  
+  
   output$fry_hab <- renderUI({
-    textInput('fry', 'Fry', value = ceiling(allInput()$fry), width = '60px')
+    textInput('fry', 'Fry', value = fry_habitat(), width = '60px')
+    
   })
   
   # print number of spawners and fry
@@ -57,7 +69,7 @@ shinyServer(function(input, output) {
   output$spawn_hab_need <- renderText(spawn_need())
   output$fry_hab_need <- renderText(fry_need())
   
-  # print available habitat
+  # print available habitat?
   output$spawn_hab_available <- renderText(input$spawn)
   output$fry_hab_available <- renderText(input$fry)
   
@@ -65,34 +77,43 @@ shinyServer(function(input, output) {
   output$spawn_limit <- renderText(ifelse(as.numeric(input$spawn) < as.numeric(spawn_need()), 'Yes', 'No'))
   output$fry_limit <- renderText(ifelse(as.numeric(input$fry) < as.numeric(fry_need()), 'Yes', 'No'))
   
-  #Run == input$run, 
   gt <- reactive({
-    temp <- filter(grandtab, watershed == input$stream_reach)
-    if (is.na(temp$run)) {
-      return(temp)
-    } else {
-      filter(temp, run == input$run)
-    }
+    filter(grandtab, watershed == input$stream_reach, run == input$run)
   })
-  
   
   dbd <- reactive({
-    temp <- filter(doubling, watershed == input$stream_reach)
-    if (is.na(temp$run)) {
-      return(temp)
-    } else {
-      filter(temp, run == input$run)
-    }
+    filter(doubling, watershed == input$stream_reach)
   })
-
+  
   output$grand_tab <- renderPlotly({
     gt() %>% 
       plot_ly(x = ~year, y = ~count, type = 'bar', marker = list(color = 'rgb(68, 68, 68)'), 
               hoverinfo = 'text', text = ~paste('Year', year, '</br>Count', format(count, big.mark = ',', trim = FALSE))) %>% 
-      add_trace(data = dbd(), x = c(1974,2015), y = ~goal, type = 'scatter', line = list(dash = 'dash'), 
-                hoverinfo = 'text', text = ~paste('Doubling Goal', goal)) %>% 
+      add_trace(data = dbd(), x = c(1952,2015), y = ~doubling_goal, type = 'scatter', mode = 'lines', 
+                line = list(color = 'rgb(0, 0, 0)', dash = 'dash'), 
+                hoverinfo = 'text', text = ~paste('Doubling Goal', format(doubling_goal, big.mark = ',', trim = FALSE))) %>% 
       layout(yaxis = list(title = 'count'), showlegend = FALSE) %>% 
       config(displayModeBar = FALSE)
   })
+  
+  
+  # dbd <- reactive({
+  #   temp <- filter(doubling, watershed == input$stream_reach)
+  #   if (is.na(temp$run)) {
+  #     return(temp)
+  #   } else {
+  #     filter(temp, run == input$run)
+  #   }
+  # })
+  # 
+  # output$grand_tab <- renderPlotly({
+  #   gt() %>% 
+  #     plot_ly(x = ~year, y = ~count, type = 'bar', marker = list(color = 'rgb(68, 68, 68)'), 
+  #             hoverinfo = 'text', text = ~paste('Year', year, '</br>Count', format(count, big.mark = ',', trim = FALSE))) %>% 
+  #     add_trace(data = dbd(), x = c(1974,2015), y = ~goal, type = 'scatter', line = list(dash = 'dash'), 
+  #               hoverinfo = 'text', text = ~paste('Doubling Goal', goal)) %>% 
+  #     layout(yaxis = list(title = 'count'), showlegend = FALSE) %>% 
+  #     config(displayModeBar = FALSE)
+  # })
   
 })

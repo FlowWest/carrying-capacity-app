@@ -5,7 +5,8 @@ shinyUI(fluidPage(
   # title + branding
   fluidRow(
     column(width = 12, id = 'title',
-           tags$img(src = 'greylogo.png', width = '200px'),
+           tags$a(tags$img(src = 'greylogo.png', width = '200px'), href = 'https://www.flowwest.com', 
+                  target = '_blank'),
            tags$h1('Chinook Carrying Capacity Calculator', id = 'app_name')
     )),
   fluidRow(
@@ -16,6 +17,7 @@ shinyUI(fluidPage(
                          width = '220px'),
              tags$h4('Habitat Available (Acres)'),
              div(
+               radioButtons(inputId = 'ic_fp', label = NULL, choices = c('in channel', 'flood plain', 'both')),
                uiOutput('spawn_hab'),
                uiOutput('fry_hab')
              ),
@@ -25,7 +27,43 @@ shinyUI(fluidPage(
                radioButtons(inputId = 'nat_adults', label = NULL, 
                             choices = c('initial', 'max', 'min', 'mean'), 
                             inline = TRUE)
-             )
+             ),
+             tags$p('Notes'),
+             tags$h6('For each watershed in the salmon population model, 
+                    the calculator returns available spawning and rearing 
+                    habitat. Documentation on the sources for these 
+                    values is available here.'),
+             tags$h6('Each watershed also has a range of returning adults 
+                    used over the twenty-year period modeled, including: 
+                    initial year, maximum, minimum, and mean. Returning adults
+                    are potential spawners swimming towards the watershed at 
+                    the Golden Gate Bridge. Actual spawners in the watershed 
+                    could be greater or less than the returning adults based 
+                    on the combined effects of mortality, straying, and 
+                    hatchery effects. Documentation here.'),
+             tags$h6('Spawning pairs that successfully reach the watershed 
+                    require 133 square feet of spawning habitat. Total 
+                    spawning habitat in each watershed is presented in acres. 
+                    If there are more spawners than available habitat, the 
+                    watershed is considered “Habitat Limited.” If a watershed 
+                    is Habitat Limited, then additional spawners will not 
+                    produce additional juveniles.'),
+             tags$h6('Each successful spawning pair will produce juveniles 
+                    at a rate that varies by watershed. Factors influencing
+                    juvenile production include fecundity, temperatures, 
+                    probability of scour, and probability of dewatering. 
+                    Documentation here.'),
+             tags$h6('Maximum habitat requirement in the watersheds occurs 
+                    when the maximum number of fish are present, typically 
+                    immediately after emergence. Territory requirements for 
+                    small juvenile salmon (fork length < 42 mm) is approximately
+                    0.5 square feet per fish. If there are more fish than
+                    habitat available, a watershed is considered “habitat limited.”'),
+             tags$h6('Grand Tab escapement estimates and the CVPIA doubling
+                    goal for each watershed are presented in order to provide 
+                    context for modeling output.'),
+             tags$h6('App created and maintained by', 
+                     tags$a('Sadie Gill', href = 'mailto:sgill@flowwest.com', target = '_blank'))
            )
     ),
     column(width = 9,
