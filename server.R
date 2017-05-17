@@ -69,7 +69,7 @@ shinyServer(function(input, output) {
   output$spawn_hab_need <- renderText(spawn_need())
   output$fry_hab_need <- renderText(fry_need())
   
-  # print available habitat
+  # print available habitat?
   output$spawn_hab_available <- renderText(input$spawn)
   output$fry_hab_available <- renderText(input$fry)
   
@@ -77,14 +77,8 @@ shinyServer(function(input, output) {
   output$spawn_limit <- renderText(ifelse(as.numeric(input$spawn) < as.numeric(spawn_need()), 'Yes', 'No'))
   output$fry_limit <- renderText(ifelse(as.numeric(input$fry) < as.numeric(fry_need()), 'Yes', 'No'))
   
-  #Run == input$run, 
   gt <- reactive({
-    temp <- filter(grandtab, watershed == input$stream_reach)
-    if (is.na(temp$run)) {
-      return(temp)
-    } else {
-      filter(temp, run == input$run)
-    }
+    filter(grandtab, watershed == input$stream_reach, run == input$run)
   })
   
   dbd <- reactive({
