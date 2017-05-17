@@ -95,8 +95,9 @@ shinyServer(function(input, output) {
     gt() %>% 
       plot_ly(x = ~year, y = ~count, type = 'bar', marker = list(color = 'rgb(68, 68, 68)'), 
               hoverinfo = 'text', text = ~paste('Year', year, '</br>Count', format(count, big.mark = ',', trim = FALSE))) %>% 
-      add_trace(data = dbd(), x = c(1974,2015), y = ~doubling_goal, type = 'scatter', line = list(dash = 'dash'), 
-                hoverinfo = 'text', text = ~paste('Doubling Goal', doubling_goal)) %>% 
+      add_trace(data = dbd(), x = c(1952,2015), y = ~doubling_goal, type = 'scatter', mode = 'lines', 
+                line = list(color = 'rgb(0, 0, 0)', dash = 'dash'), 
+                hoverinfo = 'text', text = ~paste('Doubling Goal', format(doubling_goal, big.mark = ',', trim = FALSE))) %>% 
       layout(yaxis = list(title = 'count'), showlegend = FALSE) %>% 
       config(displayModeBar = FALSE)
   })

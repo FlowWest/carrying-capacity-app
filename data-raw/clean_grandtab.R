@@ -2,26 +2,25 @@ library(magrittr)
 library(stringr)
 library(tidyverse)
 
-grandtab <- readxl::read_excel('data-raw/GrandTab 1975-2015.xlsx')
-
 reaches <- read_rds('data/reach_habitat.rds') %>% 
   filter(!is.na(adults), adults > 0) %>% 
   extract2(2)
 
+#new data from jessica goes back further
+grandtab <- read_csv('data-raw/grandtab.csv', skip = 3)
 
-gt <- filter(grandtab, !is.na(Count))
+gt <- grandtab %>% 
+  mutate(watershed = ifelse(RIVER == 'Sacramento River Main Stem', 'Upper Sacramento River', RIVER)) %>% 
+  filter(watershed %in% reaches, DATA_COLLECTION_TYPE == 'In-River Count') %>% 
+  select(year = YEAR, watershed, count = ESTIMATE, run = RUN)
 
-t1 <- gt %>% 
-  mutate(year = as.numeric(str_extract(Year, '[0-9]+')),
-         River = ifelse(River == 'Sacramento River Main Stem', 'Upper Sacramento River', River)) %>% 
-  filter(River %in% reaches, `Count Type` == 'In-River') %>% 
-  select(year, watershed = River, count = Count, run = Run)
 
-missings <- data_frame(year = rep(c(rep(1975, 26), rep(2015, 26)), times = 4),
+missings <- data_frame(year = rep(c(rep(1952, 26), rep(2015, 26)), times = 4),
                        watershed = rep(reaches, times = 8), 
                        count = NA, 
                        run = rep(c('Fall', "Late-Fall", "Winter", "Spring" ), each = 52))
-b <- bind_rows(t1, missings)
+
+b <- bind_rows(gt, missings)
 
 
 write_rds(b, 'data/grandtab.rds')
