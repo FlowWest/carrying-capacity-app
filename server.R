@@ -5,6 +5,13 @@ territory <- territory_needs()
 
 shinyServer(function(input, output) {
   
+  # output$downloadData <- downloadHandler({
+  #   filename = 'CoarseResolutionPlanningToolReport.pdf'
+  #   content = function(file) {
+  #     file.copy('www/CoarseResolutionPlanningTool Report.pdf', file)
+  #   }
+  # })
+  
   #filter results based on selected reach----
   allInput <- reactive({
     req(input$stream_reach)
