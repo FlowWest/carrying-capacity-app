@@ -5,6 +5,13 @@ territory <- territory_needs()
 
 shinyServer(function(input, output) {
   
+  # output$downloadData <- downloadHandler({
+  #   filename = 'CoarseResolutionPlanningToolReport.pdf'
+  #   content = function(file) {
+  #     file.copy('www/CoarseResolutionPlanningTool Report.pdf', file)
+  #   }
+  # })
+  
   #filter results based on selected reach----
   allInput <- reactive({
     req(input$stream_reach)
@@ -64,6 +71,7 @@ shinyServer(function(input, output) {
   
   #print habitat needed
   spawn_need <- reactive(pretty_num(num_spawn_fry()$spawners * 6.2 / 4046.86, 2))
+  # fry_need <- reactive(pretty_num(num_spawn_fry()$fry * territory[[3]] / 4046.86, 2)) #large fish territory
   fry_need <- reactive(pretty_num(num_spawn_fry()$fry * territory[[1]] / 4046.86, 2))
   
   output$spawn_hab_need <- renderText(spawn_need())
@@ -89,7 +97,7 @@ shinyServer(function(input, output) {
     gt() %>% 
       plot_ly(x = ~year, y = ~count, type = 'bar', marker = list(color = 'rgb(68, 68, 68)'), 
               hoverinfo = 'text', text = ~paste('Year', year, '</br>Count', format(count, big.mark = ',', trim = FALSE))) %>% 
-      add_trace(data = dbd(), x = c(1952,2015), y = ~doubling_goal, type = 'scatter', mode = 'lines', 
+      add_trace(data = dbd(), x = c(1952,2015), y = ~doubling_goal, type = 'scatter', mode = 'lines+markers', 
                 line = list(color = 'rgb(0, 0, 0)', dash = 'dash'), 
                 hoverinfo = 'text', text = ~paste('Doubling Goal', format(doubling_goal, big.mark = ',', trim = FALSE))) %>% 
       layout(yaxis = list(title = 'count'), showlegend = FALSE) %>% 

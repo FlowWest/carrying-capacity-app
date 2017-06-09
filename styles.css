@@ -1,6 +1,5 @@
 #title{
   background-color: #333;
-  margin-top:-15px;
   padding-left:30px;
   padding-bottom:20px;
   padding-top:10px;
@@ -21,6 +20,7 @@
   margin: auto;
   min-width: 250px;
   padding-left:20px;
+  padding-bottom: 400px;
 }
 
 #controls{
