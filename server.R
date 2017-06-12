@@ -70,12 +70,11 @@ shinyServer(function(input, output) {
   output$num_spawners <- renderText(pretty_num(num_spawn_fry()$spawners, 0))
   
   #print habitat needed
-  spawn_need <- reactive(pretty_num(num_spawn_fry()$spawners * 6.2 / 4046.86, 2))
-  # fry_need <- reactive(pretty_num(num_spawn_fry()$fry * territory[[3]] / 4046.86, 2)) #large fish territory
-  fry_need <- reactive(pretty_num(num_spawn_fry()$fry * territory[[1]] / 4046.86, 2))
+  spawn_need <- reactive(num_spawn_fry()$spawners * 6.2 / 4046.86)
+  fry_need <- reactive(num_spawn_fry()$fry * territory[[1]] / 4046.86)
   
-  output$spawn_hab_need <- renderText(spawn_need())
-  output$fry_hab_need <- renderText(fry_need())
+  output$spawn_hab_need <- renderText(pretty_num(spawn_need(), 2))
+  output$fry_hab_need <- renderText(pretty_num(fry_need(), 2))
   
   # print available habitat?
   output$spawn_hab_available <- renderText(input$spawn)
