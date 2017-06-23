@@ -103,6 +103,9 @@ shinyServer(function(input, output) {
       config(displayModeBar = FALSE)
   })
   
+  output$flow_notez <- renderTable({
+    flow_notes
+  })
   
   # dbd <- reactive({
   #   temp <- filter(doubling, watershed == input$stream_reach)

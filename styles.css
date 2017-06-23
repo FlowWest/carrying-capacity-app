@@ -20,7 +20,7 @@
   margin: auto;
   min-width: 250px;
   padding-left:20px;
-  padding-bottom: 400px;
+  padding-bottom: 1400px;
 }
 
 #controls{
@@ -39,6 +39,10 @@
   min-width:335px;
 }
 
+.shiny-table {
+  margin:auto;
+  width:auto;
+}
 
 h5 {
   display: inline-block;

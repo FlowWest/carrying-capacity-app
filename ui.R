@@ -68,7 +68,7 @@ shinyUI(fluidPage(
              tabPanel(
                title = 'Notes',
                fluidRow(
-                 column(width = 10,
+                 column(width = 10, style = 'padding-left: 30px;',
                         tags$h2('Chinook Carrying Capacity Calculator'),
                         tags$h4('An interactive tool for estimating how much habitat is required for Chinook salmon in Central 
                                 Valley watersheds during the adult and juvenile life stages.'),
@@ -109,7 +109,14 @@ shinyUI(fluidPage(
                         tags$br(),
                         tags$p('Grand Tab escapement estimates and the CVPIA fall run doubling goal for each watershed are presented
                                in order to provide context for modeling output. Future iterations of the salmon population model will
-                               develop estimates for additional species. ')
+                               develop estimates for additional species. '),
+                        tags$br(),
+                        tags$p('The amount of in-channel habitat is calculated using a median flow value for each watershed. 
+                               Floodplain habitat is assumed to be activated when flows exceed a threshold value. The threshold 
+                               value is a flow that occurs on a 2-year frequency and is sustained for 14 continuous days. Median
+                               flows and floodplain thresholds are presented in the following table.'),
+                        tags$br(),
+                        tableOutput('flow_notez')
                         
                         
                  ))
