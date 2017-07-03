@@ -2,28 +2,25 @@ natal_shed_ccUI <- function(id) {
   ns <- NS(id)
   
   tagList(
-    column(id='controls_col', width = 3,
-           div(id='controls',
-               selectInput(ns('stream_reach'), 'Reach', 
-                           choices = habitat_adults$watershed, selected = 'Merced River',
-                           width = '220px'),
-               tags$h4('Habitat Available (Acres)'),
-               div(
-                 radioButtons(inputId = ns('ic_fp'), label = NULL, choices = c('in channel', 'flood plain', 'both')),
-                 uiOutput(ns('spawn_hab')),
-                 uiOutput(ns('fry_hab'))
-               ),
-               tags$h4('Model Simulated Number of Natural Spawners'),
-               div(
-                 uiOutput(ns('num_adults')),
-                 radioButtons(inputId = ns('nat_adults'), label = NULL, 
-                              choices = c('initial', 'max', 'min', 'mean'), 
-                              inline = TRUE),
-                 tags$h4('Estimates are derived from the Central Valley Project Improvement Act salmon population model 
+    column(width = 3,
+           selectInput(ns('stream_reach'), 'Reach', 
+                       choices = habitat_adults$watershed, selected = 'Merced River',
+                       width = '220px'),
+           tags$h4('Habitat Available (Acres)'),
+           div(
+             radioButtons(inputId = ns('ic_fp'), label = NULL, choices = c('in channel', 'flood plain', 'both')),
+             uiOutput(ns('spawn_fry_hab'))
+           ),
+           tags$h4('Model Simulated Number of Natural Spawners'),
+           div(
+             uiOutput(ns('num_adults')),
+             radioButtons(inputId = ns('nat_adults'), label = NULL, 
+                          choices = c('initial', 'max', 'min', 'mean'), 
+                          inline = TRUE),
+             tags$h4('Estimates are derived from the Central Valley Project Improvement Act salmon population model 
                                 as developed by the Science Integration Team.'),
-                 tags$h4('App created and maintained by', 
-                         tags$a('Sadie Gill', href = 'mailto:sgill@flowwest.com', target = '_blank'))
-               )
+             tags$h4('App created and maintained by', 
+                     tags$a('Sadie Gill', href = 'mailto:sgill@flowwest.com', target = '_blank'))
            )
     ),
     column(width = 9,
@@ -95,10 +92,6 @@ natal_shed_cc <- function(input, output, session) {
     textInput(inputId = ns('adults'), label = NULL, value = ceiling(natural_spawners()), width = '220px')
   })
   
-  output$spawn_hab <- renderUI({
-    textInput(ns('spawn'), 'Spawning', value = ceiling(allInput()$spawning), width = '60px')
-  })
-  
   fry_habitat <- reactive({
     if (input$ic_fp == 'in channel') {
       ceiling(allInput()$fry)
@@ -110,8 +103,11 @@ natal_shed_cc <- function(input, output, session) {
   })
   
   
-  output$fry_hab <- renderUI({
-    textInput(ns('fry'), 'Fry', value = fry_habitat(), width = '60px')
+  output$spawn_fry_hab <- renderUI({
+    tagList(
+      textInput(ns('spawn'), 'Spawning', value = ceiling(allInput()$spawning), width = '60px', style = 'display:inline-block;'),
+      textInput(ns('fry'), 'Fry', value = fry_habitat(), width = '60px', style = 'display:inline-block;')
+    )
     
   })
   

@@ -14,14 +14,7 @@
    font-size: 50px;
 }
 
-#controls_col {
-  background-color: #bbb;
-  padding-top: 30px;
-  margin: auto;
-  min-width: 250px;
-  padding-left:20px;
-  padding-bottom: 1400px;
-}
+
 
 #controls{
   padding:10px;
@@ -50,14 +43,6 @@ h5 {
   font-weight: 500;
   font-size: 20px;
   padding-left: 20px;
-}
-
-#num_spawners {
-  display: inline-block;
-}
-
-#num_fry {
-  display: inline-block;
 }
 
 #spawn_hab_need {
