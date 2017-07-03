@@ -4,7 +4,14 @@ library(plotly)
 library(tidyverse)
 library(readr)
 
-habitat_adults <- readRDS('data/reach_habitat.rds') %>% filter(!is.na(adults), adults > 0)
+source('modules/natal_shed_cc.R')
+source('modules/notes.R')
+source('helpers.R', local = TRUE)
+source('calc_num_fish.R', local = TRUE)
+
+territory <- territory_needs()
+
+habitat_adults <- read_rds('data/reach_habitat.rds') %>% filter(!is.na(adults), adults > 0)
 grandtab <- read_rds('data/grandtab.rds')
 doubling <- read_rds('data/doubling_goal.rds')
 spawners <- read_rds('data/natural_adult_spawners.rds')
