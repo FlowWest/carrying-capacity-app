@@ -1,6 +1,6 @@
-pretty_num <- function(num, n) {
-  format(round(num, n), big.mark = ',', trim = FALSE)
-} 
+pretty_num <- function(num, places = 0) {
+  format(round(num, places), big.mark = ',', trim = FALSE)
+}
 
 #' Inverse logit link, transforms variables on logit scale to real scale.
 #' The inverse logit function (called either the inverse logit or the logistic
@@ -86,9 +86,10 @@ territory_needs <- function() {
   }
   
   territory_size <- rep(0,3)
-  territory_size[1] <- territory(mean(c(3.75,4.2))) #spawning
-  territory_size[2] <- territory(mean(c(4.2,7.4))) #fry
-  territory_size[3] <- territory(mean(c(7.4,11))) #parr
+  territory_size[1] <- territory(mean(c(3.75,4.2))) 
+  territory_size[2] <- territory(mean(c(4.2,7.4)))
+  territory_size[3] <- territory(mean(c(7.4,11))) 
+  territory_size[4] <- 0
   
   return(territory_size)
 }
