@@ -1,5 +1,6 @@
 navbarPage(
-  title = 'Chinook Carrying Capacity',
+  title = 'Chinook Carrying Capacity Calculator', 
+  collapsible = TRUE,
   theme = shinytheme('cosmo'),
   header = includeCSS('styles.css'),
   # title + branding

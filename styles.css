@@ -45,41 +45,54 @@ h5 {
   padding-left: 20px;
 }
 
-#spawn_hab_need {
+#one-num_spawners {
   display: inline-block;
 }
 
-#fry_hab_need {
+#one-num_fry {
   display: inline-block;
 }
 
-#spawn_hab_available {
+#one-spawn_hab_need {
   display: inline-block;
 }
 
-#fry_hab_available {
+#one-fry_hab_need {
   display: inline-block;
 }
 
-#spawn_limit {
+#one-spawn_hab_available {
   display: inline-block;
 }
 
-#spawn_hab {
+#one-fry_hab_available {
+  display: inline-block;
+}
+
+#one-spawn_limit {
+  display: inline-block;
+}
+
+#one-spawn_hab {
   display: inline-block;
   padding-right: 30px;
 }
 
-#fry_hab {
+#one-fry_hab {
   display: inline-block;
 }
 
-#fry_limit {
+#one-fry_limit {
   display: inline-block;
 }
 
 .shiny-text-output {
   font-size: 20px;
+}
+
+.shiny-input-container {
+  display:inline-block;
+  margin-right:30px;
 }
 
 label {
