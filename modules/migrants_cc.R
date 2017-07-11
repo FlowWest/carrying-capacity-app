@@ -9,7 +9,7 @@ migrants_ccUI <- function(id) {
                          choices = c('Upper-mid Sacramento River', 'Lower-mid Sacramento River',
                                      'Lower Sacramento River', 'San Joaquin River', 'North Delta', 'South Delta'),
                          selected = 'Upper-mid Sacramento River'),
-             checkboxGroupInput(ns('sizes'), 'Select Sizes', choices = c('s', 'm', 'l', 'vl'), selected = c('s', 'm', 'l', 'vl'),
+             checkboxGroupInput(ns('sizes'), 'Select Sizes', choices = c('small', 'medium', 'large', 'very large'), selected = c('small', 'medium', 'large', 'very large'),
                                 inline = TRUE),
              tabsetPanel(
                tabPanel('Migrants',
@@ -22,6 +22,12 @@ migrants_ccUI <- function(id) {
       column(width = 4,
              tags$br(),
              tags$img(src = 'sheds.png', width = '100%'))
+    ),
+    fluidRow(
+      column(width = 12,
+             tags$h4('Size Class Ranges:'),
+             tags$h4('small (3.75 - 4.2 cm), medium (4.2 - 7.4 cm), large (7.4 - 11 cm), very large (>11 cm)')
+             )
     )
   )
   

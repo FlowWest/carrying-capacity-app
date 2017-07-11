@@ -1,5 +1,6 @@
 library(shiny)
 library(tidyverse)
+library(forcats)
 library(magrittr)
 library(visNetwork)
 library(shinycssloaders)
@@ -26,7 +27,12 @@ flow_notes <- read_rds('data/flow_notes.rds') %>%
 
 
 inps <- readr::read_csv('data/All inputs.csv')
-migr <- readr::read_rds('data/migrants.rds')
+
+size_lookup <- c('small', 'medium', 'large', 'very large')
+names(size_lookup)  <- c('s', 'm', 'l', 'vl')
+migr <- readr::read_rds('data/migrants.rds') %>% 
+  mutate(size = fct_inorder(size_lookup[size]))
+
 habitat <- read_rds('data/habitat.rds')
 
 # 4046.86 acres to sq meters

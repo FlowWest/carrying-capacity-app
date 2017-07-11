@@ -8,7 +8,7 @@ natal_shed_ccUI <- function(id) {
                        width = '220px'),
            tags$h4('Habitat Available (Acres)'),
            div(
-             radioButtons(inputId = ns('ic_fp'), label = NULL, choices = c('in channel', 'flood plain', 'both')),
+             radioButtons(inputId = ns('ic_fp'), label = NULL, choices = c('in channel', 'floodplain', 'both')),
              uiOutput(ns('spawn_fry_hab'))
            ),
            tags$h4('Model Simulated Number of Natural Spawners'),
@@ -97,7 +97,7 @@ natal_shed_cc <- function(input, output, session) {
   fry_habitat <- reactive({
     if (input$ic_fp == 'in channel') {
       ceiling(allInput()$fry)
-    } else if (input$ic_fp == 'flood plain') {
+    } else if (input$ic_fp == 'floodplain') {
       ceiling(allInput()$fp_area_acres)
     } else {
       ceiling(allInput()$fry + allInput()$fp_area_acres)
@@ -121,12 +121,12 @@ natal_shed_cc <- function(input, output, session) {
   spawn_need <- reactive(num_spawn_fry()$spawners * 6.2 / 4046.86)
   fry_need <- reactive(num_spawn_fry()$fry * territory[[1]] / 4046.86)
   
-  output$spawn_hab_need <- renderText(pretty_num(spawn_need(), 2))
-  output$fry_hab_need <- renderText(pretty_num(fry_need(), 2))
+  output$spawn_hab_need <- renderText(paste(pretty_num(spawn_need(), 2), 'acres'))
+  output$fry_hab_need <- renderText(paste(pretty_num(fry_need(), 2), 'acres'))
   
   # print available habitat?
-  output$spawn_hab_available <- renderText(input$spawn)
-  output$fry_hab_available <- renderText(input$fry)
+  output$spawn_hab_available <- renderText(paste(input$spawn, 'acres'))
+  output$fry_hab_available <- renderText(paste(input$fry, 'acres'))
   
   # print habitat limited
   output$spawn_limit <- renderText(ifelse(as.numeric(input$spawn) < as.numeric(spawn_need()), 'Yes', 'No'))
