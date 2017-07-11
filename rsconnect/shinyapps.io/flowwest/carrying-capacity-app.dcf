@@ -3,8 +3,8 @@ title: carrying-capacity-app
 account: flowwest
 server: shinyapps.io
 appId: 177678
-bundleId: 894527
+bundleId: 900183
 url: https://flowwest.shinyapps.io/carrying-capacity-app/
-when: 1499367909.82046
+when: 1499804136.1192
 asMultiple: FALSE
 asStatic: FALSE

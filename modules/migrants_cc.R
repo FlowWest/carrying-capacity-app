@@ -58,7 +58,8 @@ migrants_cc <- function(input, output, session) {
     plotd() %>% 
       plot_ly(x = ~factor(month.name[month], month.name), y = ~count, color = ~size, key = ~month, type = 'bar', hoverinfo = 'text',
               text = ~paste(month.name[month], '<br>', 
-                            pretty_num(count, 0), size)) %>% 
+                            pretty_num(count, 0), size),
+              colors = 'Dark2') %>% 
       layout(barmode = 'stack', xaxis = list(title = 'month')) %>% 
       config(displayModeBar = FALSE)
     
