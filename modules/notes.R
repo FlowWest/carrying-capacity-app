@@ -50,7 +50,9 @@ notesUI <- function(id) {
            tags$p('The amount of in-channel habitat is calculated using a median flow value for each watershed. 
                   Floodplain habitat is assumed to be activated when flows exceed a threshold value. The threshold 
                   value is a flow that occurs on a 2-year frequency and is sustained for 14 continuous days. Median
-                  flows and floodplain thresholds are presented in the following table.'),
+                  flows and floodplain thresholds in cubic feet per second are presented in the following table.'),
+           tags$br(),
+           tags$a(href = 'http://www.water.ca.gov/conservationstrategy/docs/app_h.pdf', 'CVFPP Appendix H', target = '_blank'),
            tags$br(),
            tableOutput(ns('flow_notez'))))
   )

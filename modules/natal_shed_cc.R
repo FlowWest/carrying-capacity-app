@@ -141,13 +141,18 @@ natal_shed_cc <- function(input, output, session) {
   })
   
   output$grand_tab <- renderPlotly({
+    validate(
+      need(nrow(gt() > 0), 'No availble data')
+    )
+    
     gt() %>% 
-      plot_ly(x = ~year, y = ~count, type = 'bar', marker = list(color = 'rgb(68, 68, 68)'), 
-              hoverinfo = 'text', text = ~paste('Year', year, '</br>Count', format(count, big.mark = ',', trim = FALSE))) %>% 
+      plot_ly(x = ~year, y = ~count, type = 'bar', color = ~type,
+              hoverinfo = 'text', 
+              text = ~paste(type, '<br>', 'Year', year, '</br>Count', format(count, big.mark = ',', trim = FALSE))) %>% 
       add_trace(data = dbd(), x = c(1952,2015), y = ~doubling_goal, type = 'scatter', mode = 'lines+markers', 
-                line = list(color = 'rgb(0, 0, 0)', dash = 'dash'), 
+                line = list(color = 'rgb(0, 0, 0)', dash = 'dash'), inherit = FALSE,
                 hoverinfo = 'text', text = ~paste('Doubling Goal', format(doubling_goal, big.mark = ',', trim = FALSE))) %>% 
-      layout(yaxis = list(title = 'count'), showlegend = FALSE) %>% 
+      layout(yaxis = list(title = 'count'), showlegend = FALSE, barmode = 'stack') %>% 
       config(displayModeBar = FALSE)
   })
   
