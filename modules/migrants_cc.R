@@ -115,10 +115,21 @@ migrants_cc <- function(input, output, session) {
     validate(
       need(!is.null(values$click_month), 'Click on a month on the chart')
     )
-    
-    paste0('Currently there are ', pretty_num(dplyr::filter(habitat, watershed == input$stem)[[2]]), ' acres of rearing habitat in the ',
+    if (input$stem %in% c('North Delta', 'South Delta')) {
+      paste0('Currently there are ', pretty_num(dplyr::filter(habitat, watershed == input$stem)[[2]]), ' acres of rearing habitat in the ',
+             input$stem, '. In ', month.name[as.numeric(values$click_month)], ', an additional ', pretty_num(more_terr()), 
+             ' acres of rearing habitat is needed to prevent out migration.')
+    } else {
+    paste0('Currently there are ', pretty_num(dplyr::filter(habitat, watershed == input$stem)[[2]]), 
+           ' acres of in-channel rearing habitat in the ', 
            input$stem, '. In ', month.name[as.numeric(values$click_month)], ', an additional ', pretty_num(more_terr()), 
-           ' acres of rearing habitat is needed to prevent out migration.')
+           ' acres of rearing habitat is needed to prevent out migration. Floodplain habitat is activated
+           when flow exceeds ', 
+           pretty_num(dplyr::pull(dplyr::filter(flow_notes, Watershed == input$stem), `Floodplain Threshold`)),
+           ' cfs, creating an additional ',
+           pretty_num(dplyr::pull(dplyr::filter(fp_accum, stems == input$stem), fp_area_acres)),
+           ' acres of rearing habitat.')
+    }
   })
   
 }

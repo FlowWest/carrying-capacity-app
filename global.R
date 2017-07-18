@@ -34,7 +34,7 @@ flow_notes <- read_rds('data/flow_notes.rds') %>%
 fp_accum <- tibble(
   stems = c('Upper-mid Sacramento River', 'Lower-mid Sacramento River',
     'Lower Sacramento River', 'San Joaquin River', 'North Delta', 'South Delta'),
-  fp_area_acres = c(912.9, 52.1 * 1/3, 52.1 * 2/3, 931, NA, NA)
+  fp_area_acres = c(912.9, 52.1 * 2/3, 52.1 * 1/3, 931, NA, NA)
 )
 
 inps <- readr::read_csv('data/All inputs.csv')
