@@ -44,14 +44,14 @@ natal_shed_ccUI <- function(id) {
                         div(tags$h5('Needed Habitat'), textOutput(ns('fry_hab_need'))),
                         div(tags$h5('Habitat Limited'), textOutput(ns('fry_limit')))))),
            fluidRow(id = 'chart',
-                    column(width = 11,
-                           tags$h5('Grand Tab Escapement', style = 'width: 400px;'),
-                           plotlyOutput(ns('grand_tab'))
-                    ),
-                    column(width = 1, style = 'padding-left:0;',
-                           radioButtons(ns('run'), 'Run', choices = c('Fall', 'Late-Fall', 'Winter', 'Spring'),
-                                        selected = 'Fall')
-                    )
+                    column(width = 12,
+                           tags$h5('Grand Tab Escapement - Fall', style = 'width: 400px;'),
+                           plotlyOutput(ns('grand_tab')))
+                    # ),
+                    # column(width = 1, style = 'padding-left:0;',
+                    #        radioButtons(ns('run'), 'Run', choices = c('Fall', 'Late-Fall', 'Winter', 'Spring'),
+                    #                     selected = 'Fall')
+                    # )
            ))
   )
   
@@ -133,7 +133,7 @@ natal_shed_cc <- function(input, output, session) {
   output$fry_limit <- renderText(ifelse(as.numeric(input$fry) < as.numeric(fry_need()), 'Yes', 'No'))
   
   gt <- reactive({
-    filter(grandtab, watershed == input$stream_reach, run == input$run)
+    filter(grandtab, watershed == input$stream_reach)
   })
   
   dbd <- reactive({
@@ -141,13 +141,18 @@ natal_shed_cc <- function(input, output, session) {
   })
   
   output$grand_tab <- renderPlotly({
+    validate(
+      need(nrow(gt()) != 0, 'No availble data')
+    )
+    
     gt() %>% 
-      plot_ly(x = ~year, y = ~count, type = 'bar', marker = list(color = 'rgb(68, 68, 68)'), 
-              hoverinfo = 'text', text = ~paste('Year', year, '</br>Count', format(count, big.mark = ',', trim = FALSE))) %>% 
-      add_trace(data = dbd(), x = c(1952,2015), y = ~doubling_goal, type = 'scatter', mode = 'lines+markers', 
-                line = list(color = 'rgb(0, 0, 0)', dash = 'dash'), 
-                hoverinfo = 'text', text = ~paste('Doubling Goal', format(doubling_goal, big.mark = ',', trim = FALSE))) %>% 
-      layout(yaxis = list(title = 'count'), showlegend = FALSE) %>% 
+      plot_ly(x = ~year, y = ~count, type = 'bar', color = ~type,
+              colors = c('#636363', '#252525'), hoverinfo = 'text', 
+              text = ~paste(type, '<br>', 'Year', year, '</br>Count', format(count, big.mark = ',', trim = FALSE))) %>% 
+      add_trace(data = dbd(), x = c(1952,2015), y = ~doubling_goal, type = 'scatter', mode = 'lines+markers',
+                line = list(color = 'rgb(0, 0, 0)', dash = 'dash'), inherit = FALSE,
+                hoverinfo = 'text', text = ~paste('Doubling Goal', format(doubling_goal, big.mark = ',', trim = FALSE))) %>%
+      layout(yaxis = list(title = 'count'), showlegend = FALSE, barmode = 'stack') %>% 
       config(displayModeBar = FALSE)
   })
   

@@ -107,3 +107,7 @@ label {
   padding-top: 20px;
 }
 
+.shiny-output-error {
+  padding-left: 20px;
+}
+

@@ -352,16 +352,16 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.35"
-     inkscape:cx="54.829997"
-     inkscape:cy="259.21552"
+     inkscape:zoom="0.24748737"
+     inkscape:cx="-552.73294"
+     inkscape:cy="139.78441"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
      showborder="false"
      inkscape:window-width="1920"
      inkscape:window-height="1048"
-     inkscape:window-x="1920"
+     inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:window-maximized="1">
     <inkscape:grid
@@ -376,7 +376,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -388,7 +388,7 @@
        xml:space="preserve"
        id="flowRoot4241"
        style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       transform="translate(-852.89198,-804.93117)"
+       transform="translate(-856.89198,-804.93117)"
        inkscape:export-xdpi="90"
        inkscape:export-ydpi="90"
        inkscape:export-filename="/home/sadie/Github/carrying-capacity-app/www/sheds.png"><flowRegion
@@ -444,7 +444,7 @@
        xml:space="preserve"
        id="flowRoot4283"
        style="font-style:normal;font-weight:normal;font-size:50px;line-height:125%;font-family:sans-serif;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       transform="translate(-148.07877,-368.19345)"
+       transform="translate(-135.98111,-368.19345)"
        inkscape:export-xdpi="90"
        inkscape:export-ydpi="90"
        inkscape:export-filename="/home/sadie/Github/carrying-capacity-app/www/sheds.png"><flowRegion
@@ -461,7 +461,7 @@
        xml:space="preserve"
        id="flowRoot4295"
        style="font-style:normal;font-weight:normal;font-size:50px;line-height:125%;font-family:sans-serif;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       transform="translate(249.07523,-303.07927)"
+       transform="translate(303.53061,-270.22145)"
        inkscape:export-xdpi="90"
        inkscape:export-ydpi="90"
        inkscape:export-filename="/home/sadie/Github/carrying-capacity-app/www/sheds.png"><flowRegion
@@ -472,56 +472,9 @@
            x="140"
            y="952.36218"
            style="font-size:50px" /></flowRegion><flowPara
-         id="flowPara4303">American River</flowPara></flowRoot>    <text
-       xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="461.99884"
-       y="1057.3403"
-       id="text4307"
-       sodipodi:linespacing="125%"
-       inkscape:export-xdpi="90"
-       inkscape:export-ydpi="90"
-       inkscape:export-filename="/home/sadie/Github/carrying-capacity-app/www/sheds.png"><tspan
-         sodipodi:role="line"
-         id="tspan4309"
-         x="461.99884"
-         y="1057.3403"
-         style="font-size:50px">Cosumnes River</tspan><tspan
-         sodipodi:role="line"
-         x="461.99884"
-         y="1119.8403"
-         id="tspan4311"
-         style="font-size:50px">Mokelumne River</tspan><tspan
-         sodipodi:role="line"
-         x="461.99884"
-         y="1182.3403"
-         id="tspan4315"
-         style="font-size:50px">Calaberas River</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:50px;line-height:125%;font-family:sans-serif;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="649.45276"
-       y="1659.8936"
-       id="text4319"
-       sodipodi:linespacing="125%"
-       inkscape:export-xdpi="90"
-       inkscape:export-ydpi="90"
-       inkscape:export-filename="/home/sadie/Github/carrying-capacity-app/www/sheds.png"><tspan
-         sodipodi:role="line"
-         id="tspan4321"
-         x="649.45276"
-         y="1659.8936">Stanislaus River</tspan><tspan
-         sodipodi:role="line"
-         x="649.45276"
-         y="1722.3936"
-         id="tspan4323">Tuolumne River</tspan><tspan
-         sodipodi:role="line"
-         x="649.45276"
-         y="1784.8936"
-         id="tspan4325">Merced River</tspan></text>
-    <g
+         id="flowPara4303">American River</flowPara></flowRoot>    <g
        id="g12964"
-       transform="translate(-34.932264,57.142857)"
+       transform="translate(-34.932263,57.142857)"
        inkscape:export-xdpi="90"
        inkscape:export-ydpi="90"
        inkscape:export-filename="/home/sadie/Github/carrying-capacity-app/www/sheds.png">
@@ -558,7 +511,7 @@
     </g>
     <g
        id="g12600"
-       transform="translate(17.217943,57.142857)"
+       transform="translate(17.217945,53.143834)"
        inkscape:export-xdpi="90"
        inkscape:export-ydpi="90"
        inkscape:export-filename="/home/sadie/Github/carrying-capacity-app/www/sheds.png">
@@ -593,87 +546,146 @@
          d="m 105.13601,460.06222 0.68616,-122.75297 0,0"
          style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:12;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-start:url(#TriangleInL-9)" />
     </g>
-    <rect
-       style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:4.99642754;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       id="rect7791-1-8"
-       width="504.2746"
-       height="117.57517"
-       x="-599.24976"
-       y="-1768.0273"
-       transform="matrix(-0.99999999,-1.5976002e-4,2.1779675e-4,-0.99999998,0,0)"
+    <g
+       id="g4437"
+       transform="translate(-174.28571,317.14286)"
        inkscape:export-xdpi="90"
-       inkscape:export-ydpi="90"
-       inkscape:export-filename="/home/sadie/Github/carrying-capacity-app/www/sheds.png" />
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:50px;line-height:125%;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="340.51004"
-       y="1721.2549"
-       id="text7803-03-5"
-       sodipodi:linespacing="125%"
-       transform="matrix(0.99999638,-0.00269187,0.00269187,0.99999638,0,0)"
-       inkscape:export-xdpi="90"
-       inkscape:export-ydpi="90"
-       inkscape:export-filename="/home/sadie/Github/carrying-capacity-app/www/sheds.png"><tspan
-         sodipodi:role="line"
-         x="348.46902"
+       inkscape:export-ydpi="90">
+      <text
+         inkscape:export-filename="/home/sadie/Github/carrying-capacity-app/www/sheds.png"
+         inkscape:export-ydpi="90"
+         inkscape:export-xdpi="90"
+         sodipodi:linespacing="125%"
+         id="text4319"
+         y="1659.8936"
+         x="649.45276"
+         style="font-style:normal;font-weight:normal;font-size:50px;line-height:125%;font-family:sans-serif;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         xml:space="preserve"><tspan
+           y="1659.8936"
+           x="649.45276"
+           id="tspan4321"
+           sodipodi:role="line">Stanislaus River</tspan><tspan
+           id="tspan4323"
+           y="1722.3936"
+           x="649.45276"
+           sodipodi:role="line">Tuolumne River</tspan><tspan
+           id="tspan4325"
+           y="1784.8936"
+           x="649.45276"
+           sodipodi:role="line">Merced River</tspan></text>
+      <rect
+         inkscape:export-filename="/home/sadie/Github/carrying-capacity-app/www/sheds.png"
+         inkscape:export-ydpi="90"
+         inkscape:export-xdpi="90"
+         transform="matrix(-0.99999999,-1.5976002e-4,2.1779675e-4,-0.99999998,0,0)"
+         y="-1768.0273"
+         x="-599.24976"
+         height="117.57517"
+         width="504.2746"
+         id="rect7791-1-8"
+         style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:4.99642754;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <text
+         inkscape:export-filename="/home/sadie/Github/carrying-capacity-app/www/sheds.png"
+         inkscape:export-ydpi="90"
+         inkscape:export-xdpi="90"
+         transform="matrix(0.99999638,-0.00269187,0.00269187,0.99999638,0,0)"
+         sodipodi:linespacing="125%"
+         id="text7803-03-5"
          y="1721.2549"
-         id="tspan7807-4-1">San Joaquin River </tspan></text>
-    <path
-       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:12;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-start:url(#TriangleInL-9-6)"
-       d="m 348.39089,1526.4706 -0.70907,122.7528 0,0"
-       id="path9520-4-8"
-       inkscape:connector-curvature="0"
-       inkscape:transform-center-x="-0.71948529"
-       inkscape:transform-center-y="-79.533391"
-       sodipodi:nodetypes="ccc"
+         x="340.51004"
+         style="font-style:normal;font-weight:normal;font-size:50px;line-height:125%;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         xml:space="preserve"><tspan
+           id="tspan7807-4-1"
+           y="1721.2549"
+           x="348.46902"
+           sodipodi:role="line">San Joaquin River </tspan></text>
+      <path
+         inkscape:export-filename="/home/sadie/Github/carrying-capacity-app/www/sheds.png"
+         inkscape:export-ydpi="90"
+         inkscape:export-xdpi="90"
+         sodipodi:nodetypes="ccc"
+         inkscape:transform-center-y="-79.533391"
+         inkscape:transform-center-x="-0.71948529"
+         inkscape:connector-curvature="0"
+         id="path9520-4-8"
+         d="m 348.39089,1526.4706 -0.70907,122.7528 0,0"
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:12;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-start:url(#TriangleInL-9-6)" />
+    </g>
+    <g
+       id="g4425"
+       transform="matrix(0.87044696,-0.49226222,0.49226222,0.87044696,-341.4699,86.257222)"
        inkscape:export-xdpi="90"
-       inkscape:export-ydpi="90"
-       inkscape:export-filename="/home/sadie/Github/carrying-capacity-app/www/sheds.png" />
-    <rect
-       style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:4.63804388;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       id="rect7791-1-3-3"
-       width="433.2081"
-       height="117.93339"
-       x="665.62201"
-       y="540.11475"
-       transform="matrix(0.45286405,0.89157958,-0.89157958,0.45286405,0,0)"
-       inkscape:export-xdpi="90"
-       inkscape:export-ydpi="90"
-       inkscape:export-filename="/home/sadie/Github/carrying-capacity-app/www/sheds.png" />
+       inkscape:export-ydpi="90">
+      <rect
+         inkscape:export-filename="/home/sadie/Github/carrying-capacity-app/www/sheds.png"
+         inkscape:export-ydpi="90"
+         inkscape:export-xdpi="90"
+         transform="matrix(0.45286405,0.89157958,-0.89157958,0.45286405,0,0)"
+         y="540.11475"
+         x="665.62201"
+         height="117.93339"
+         width="433.2081"
+         id="rect7791-1-3-3"
+         style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:4.63804388;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <text
+         inkscape:export-filename="/home/sadie/Github/carrying-capacity-app/www/sheds.png"
+         inkscape:export-ydpi="90"
+         inkscape:export-xdpi="90"
+         transform="matrix(0.45286405,0.89157958,-0.89157958,0.45286405,0,0)"
+         sodipodi:linespacing="125%"
+         id="text7803-03-1-8"
+         y="606.85858"
+         x="873.88837"
+         style="font-style:normal;font-weight:normal;font-size:50px;line-height:125%;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         xml:space="preserve"><tspan
+           id="tspan7807-4-5-3"
+           y="606.85858"
+           x="873.88837"
+           sodipodi:role="line">North Delta</tspan></text>
+      <path
+         inkscape:export-filename="/home/sadie/Github/carrying-capacity-app/www/sheds.png"
+         inkscape:export-ydpi="90"
+         inkscape:export-xdpi="90"
+         sodipodi:nodetypes="ccc"
+         inkscape:transform-center-y="-79.533391"
+         inkscape:transform-center-x="-0.71948529"
+         inkscape:connector-curvature="0"
+         id="path9520-4-9-1"
+         d="m -297.68826,1140.5042 109.75478,-54.9787 0,0"
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:12;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-start:url(#TriangleInL-9-4-5)" />
+    </g>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:50px;line-height:125%;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="873.88837"
-       y="606.85858"
-       id="text7803-03-1-8"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="279.14169"
+       y="1457.526"
+       id="text4307"
        sodipodi:linespacing="125%"
-       transform="matrix(0.45286405,0.89157958,-0.89157958,0.45286405,0,0)"
        inkscape:export-xdpi="90"
        inkscape:export-ydpi="90"
        inkscape:export-filename="/home/sadie/Github/carrying-capacity-app/www/sheds.png"><tspan
+         y="1457.526"
+         x="279.14169"
          sodipodi:role="line"
-         x="873.88837"
-         y="606.85858"
-         id="tspan7807-4-5-3">North Delta</tspan></text>
-    <path
-       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:12;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-start:url(#TriangleInL-9-4-5)"
-       d="m -297.68826,1140.5042 109.75478,-54.9787 0,0"
-       id="path9520-4-9-1"
-       inkscape:connector-curvature="0"
-       inkscape:transform-center-x="-0.71948529"
-       inkscape:transform-center-y="-79.533391"
-       sodipodi:nodetypes="ccc"
-       inkscape:export-xdpi="90"
-       inkscape:export-ydpi="90"
-       inkscape:export-filename="/home/sadie/Github/carrying-capacity-app/www/sheds.png" />
+         id="tspan4391"
+         style="font-size:50px">Cosumnes River</tspan><tspan
+         y="1520.026"
+         x="279.14169"
+         sodipodi:role="line"
+         id="tspan4393"
+         style="font-size:50px">Mokelumne River</tspan><tspan
+         y="1582.526"
+         x="279.14169"
+         sodipodi:role="line"
+         id="tspan4395"
+         style="font-size:50px">Calaveras River</tspan></text>
     <rect
        style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:4.63804388;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect7791-1-3-33"
        width="433.2081"
        height="117.93339"
-       x="949.20953"
-       y="-408.08014"
+       x="1295.2953"
+       y="-225.92694"
        transform="matrix(-0.00203509,0.99999793,-0.99999793,-0.00203509,0,0)"
        inkscape:export-xdpi="90"
        inkscape:export-ydpi="90"
@@ -681,8 +693,8 @@
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:50px;line-height:125%;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="1155.6008"
-       y="-334.23203"
+       x="1501.6865"
+       y="-152.07883"
        id="text7803-03-1-86"
        sodipodi:linespacing="125%"
        transform="matrix(-0.00203509,0.99999793,-0.99999793,-0.00203509,0,0)"
@@ -690,12 +702,12 @@
        inkscape:export-ydpi="90"
        inkscape:export-filename="/home/sadie/Github/carrying-capacity-app/www/sheds.png"><tspan
          sodipodi:role="line"
-         x="1155.6008"
-         y="-334.23203"
+         x="1501.6865"
+         y="-152.07883"
          id="tspan7807-4-5-4">South Delta</tspan></text>
     <path
        style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:12;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-start:url(#TriangleInL-9-4-8)"
-       d="m 163.8752,1156.5769 122.75132,0.936 0,0"
+       d="m -18.98194,1502.2912 122.75132,0.936 0,0"
        id="path9520-4-9-8"
        inkscape:connector-curvature="0"
        inkscape:transform-center-x="-0.71948529"
@@ -706,7 +718,7 @@
        inkscape:export-filename="/home/sadie/Github/carrying-capacity-app/www/sheds.png" />
     <g
        id="g12977"
-       transform="translate(26,0)"
+       transform="translate(300.28571,282.85715)"
        inkscape:export-xdpi="90"
        inkscape:export-ydpi="90"
        inkscape:export-filename="/home/sadie/Github/carrying-capacity-app/www/sheds.png">
@@ -744,34 +756,34 @@
        id="rect7791-1-62"
        width="523.66815"
        height="142.55957"
-       x="85.39119"
-       y="541.0874"
-       transform="matrix(0.91703777,0.39880037,-0.39880037,0.91703777,0,0)"
+       x="-141.46956"
+       y="640.38239"
+       transform="matrix(0.99998766,0.00496767,-0.00496767,0.99998766,0,0)"
        inkscape:export-xdpi="90"
        inkscape:export-ydpi="90"
        inkscape:export-filename="/home/sadie/Github/carrying-capacity-app/www/sheds.png" />
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:50px;line-height:125%;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="345.60175"
-       y="599.75732"
+       x="118.741"
+       y="699.05231"
        id="text7803-03-8"
        sodipodi:linespacing="125%"
-       transform="matrix(0.91703777,0.39880037,-0.39880037,0.91703777,0,0)"
+       transform="matrix(0.99998766,0.00496767,-0.00496767,0.99998766,0,0)"
        inkscape:export-xdpi="90"
        inkscape:export-ydpi="90"
        inkscape:export-filename="/home/sadie/Github/carrying-capacity-app/www/sheds.png"><tspan
          sodipodi:role="line"
          id="tspan7805-0-4"
-         x="345.60175"
-         y="599.75732">Lower</tspan><tspan
+         x="118.741"
+         y="699.05231">Lower</tspan><tspan
          sodipodi:role="line"
-         x="345.60175"
-         y="662.25732"
+         x="118.741"
+         y="761.55231"
          id="tspan7807-4-7">Sacramento River</tspan></text>
     <path
        style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:12;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-start:url(#TriangleInL-9-2)"
-       d="m 1.9436996,880.06199 49.5831644,-112.29547 0,0"
+       d="m 121.39062,906.18413 1.29595,-122.74805 0,0"
        id="path9520-4-2"
        inkscape:connector-curvature="0"
        inkscape:transform-center-x="-0.71948529"
