@@ -26,7 +26,7 @@ migrants_ccUI <- function(id) {
     fluidRow(
       column(width = 12,
              tags$h4('Size Class Ranges:'),
-             tags$h4('small (3.75 - 4.2 cm), medium (4.2 - 7.4 cm), large (7.4 - 11 cm), very large (>11 cm)')
+             tags$h4('small (37.5 - 42 mm), medium (42 - 74 mm), large (74 - 110 mm), very large (>110 mm)')
              )
     )
   )
