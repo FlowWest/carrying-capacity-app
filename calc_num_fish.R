@@ -1,6 +1,19 @@
-calc_num_fish <- function(adults, retQ, SCDELT, hatch.alloc, TISD, YOLO, 
+calc_num_fish <- function(adults, retQ, cc.aloc, oth.aloc, SCDELT, hatch.alloc, TISD, YOLO, 
                      p.tempMC2025, A.HARV, P.scour.nst, egg.tmp.eff, degday, spawn) {
 
+  stray <- Ad.Stray(wild = 1, 
+                    pctQnatl = retQ, 
+                    SCDLT = SCDELT, 
+                    CrxChn = 31) * adults
+  
+  prop.nat.stray <- Ad.Stray(wild = 1, 
+                             pctQnatl = retQ, 
+                             SCDLT = SCDELT, 
+                             CrxChn = 31) #31 (PROPOSAL)
+  
+  nat.adult <- adults - stray + 
+    sum(stray * SCDELT) * cc.aloc + 
+    sum(stray * (1 - SCDELT)) * oth.aloc
   
   ## allocate hatchery fish returning from ocean to watersheds
   ## for stochas inps$hatch.alloc should come from Direclet dist.
@@ -21,14 +34,14 @@ calc_num_fish <- function(adults, retQ, SCDELT, hatch.alloc, TISD, YOLO,
   adult_en_route <- Adult.S(aveT23 = p.tempMC2025, BPovrT, harvest = A.HARV)
   
   ### here's the adults that made it to spawning grounds
-  nat.adult <- adults
+  nat.adult <- adult_en_route * nat.adult
   hatch.adult <- adult_en_route * hatch.adult
   
   #### all adult on spawning grounds
   init.adult <- nat.adult + hatch.adult
   
   # proportion natural adults
-  prop.nat <- nat.adult / (adults + 0.0001)
+  prop.nat <- nat.adult / (init.adult + 0.0001)
   eg2fr <- egg2fry(prop.nat = prop.nat, scour = P.scour.nst, tmp.eff = egg.tmp.eff)
   
   spawn_hab <-  spawn

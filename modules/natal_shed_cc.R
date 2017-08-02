@@ -75,8 +75,11 @@ natal_shed_cc <- function(input, output, session) {
   
   #calc number of spawners and resulting fry----
   num_spawn_fry <- reactive({
+    
     calc_num_fish(adults = as.numeric(input$adults),
-                  retQ = allInput()$retQ,
+                  retQ = allInput()$retQ, 
+                  cc.aloc = allInput()$cc_aloc,
+                  oth.aloc = allInput()$oth_aloc,
                   SCDELT = allInput()$SCDELT,
                   hatch.alloc = allInput()$hatch.alloc,
                   TISD = allInput()$TISD,
@@ -91,7 +94,8 @@ natal_shed_cc <- function(input, output, session) {
   
   # create text input with default reach values----
   output$num_adults <- renderUI({
-    textInput(inputId = ns('adults'), label = NULL, value = ceiling(natural_spawners()), width = '220px')
+    textInput(inputId = ns('adults'), label = NULL, value = ceiling(natural_spawners()), 
+              width = '220px')
   })
   
   fry_habitat <- reactive({
