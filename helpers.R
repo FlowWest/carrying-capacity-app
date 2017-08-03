@@ -111,8 +111,8 @@ territory_needs <- function() {
 
 spawnfun <- function(escapement, s_adult_inriver, sex_ratio, spawn_hab, redd_size, prob_scour, fecund, s_egg_to_fry) {
   
-  spawners <- ((escapement * s_adult_inriver * sex_ratio) > (spawn_hab) / redd_size) * (spawn_hab) / redd_size +
-    ((escapement * s_adult_inriver * sex_ratio) <= (spawn_hab)/redd_size) * (escapement * s_adult_inriver * sex_ratio)
+  spawners <- ((escapement * s_adult_inriver * sex_ratio) > (spawn_hab) / redd_size) * (spawn_hab / redd_size) +
+    ((escapement * s_adult_inriver * sex_ratio) <= (spawn_hab / redd_size)) * (escapement * s_adult_inriver * sex_ratio)
   
   newfry <- spawners * (1-prob_scour) * fecund * s_egg_to_fry
   

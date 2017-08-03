@@ -100,19 +100,19 @@ natal_shed_cc <- function(input, output, session) {
   
   fry_habitat <- reactive({
     if (input$ic_fp == 'in channel') {
-      ceiling(allInput()$fry)
+      round(allInput()$fry, 2)
     } else if (input$ic_fp == 'floodplain') {
-      ceiling(allInput()$fp_area_acres)
+      round(allInput()$fp_area_acres, 2)
     } else {
-      ceiling(allInput()$fry + allInput()$fp_area_acres)
+      round(allInput()$fry + allInput()$fp_area_acres, 2)
     }
   })
   
   
   output$spawn_fry_hab <- renderUI({
     tagList(
-      textInput(ns('spawn'), 'Spawning', value = ceiling(allInput()$spawning), width = '60px'),
-      textInput(ns('fry'), 'Fry', value = fry_habitat(), width = '60px')
+      textInput(ns('spawn'), 'Spawning', value = round(allInput()$spawning, 2), width = '80px'),
+      textInput(ns('fry'), 'Fry', value = fry_habitat(), width = '80px')
     )
     
   })
