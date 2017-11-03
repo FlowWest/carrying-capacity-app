@@ -21,7 +21,7 @@ migrants_ccUI <- function(id) {
       ),
       column(width = 4,
              tags$br(),
-             tags$img(src = 'sheds2.png', width = '85%'))
+             tags$img(src = 'sheds.png', width = '85%'))
     ),
     fluidRow(
       column(width = 12,
